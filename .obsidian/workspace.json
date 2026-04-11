@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "AI_START"
             }
+          },
+          {
+            "id": "72cf4a8cb17e7cca",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -182,15 +197,16 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "5580c3bdc0cc3f37",
+  "active": "72cf4a8cb17e7cca",
   "lastOpenFiles": [
+    "曾昆4-9周彪4-9/AI_START.md",
+    "未命名.md",
     "wkspc/task.md",
     "wkspc/新建 文本文档.txt",
     "曾昆4-9周彪4-9/7.4 集群控制与远程管控.md",
     "曾昆4-9周彪4-9/7.3 智能分析与AI大辅助决策.md",
     "曾昆4-9周彪4-9/7.2 数据智能采集与融合.md",
     "曾昆4-9周彪4-9/7.1 系统功能与平台架构.md",
-    "曾昆4-9周彪4-9/AI_START.md",
     "曾昆4-9周彪4-9/skills/软件+土木毕业论文.docx",
     "曾昆4-9周彪4-9/skills/毕业论文0619（朱文杰）.docx",
     "曾昆4-9周彪4-9/skills/thesis-writing-style/references/~$范文.docx",
