@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "0f98b04b4b79f6e7",
+        "id": "74b77d0907ff852b",
         "type": "tabs",
         "children": [
           {
-            "id": "9aac353a6fabeeef",
+            "id": "5580c3bdc0cc3f37",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "曾昆4-9周彪4-9/AI_START.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "AI_START"
+              "title": "新标签页"
             }
           }
         ]
@@ -182,8 +178,9 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "9aac353a6fabeeef",
+  "active": "5580c3bdc0cc3f37",
   "lastOpenFiles": [
+    "曾昆4-9周彪4-9/AI_START.md",
     "曾昆4-9周彪4-9/AI_START.html",
     "wkspc/~$大型地下基础设施智能暗挖建造理论与创新.docx",
     "wkspc/~WRL0003.tmp",
@@ -192,7 +189,6 @@
     "wkspc",
     "新建文件夹",
     "曾昆4-9周彪4-9/7.1 系统功能与平台架构.md",
-    "曾昆4-9周彪4-9/AI_START.md",
     "曾昆4-9周彪4-9/workspace",
     "曾昆4-9周彪4-9/skills",
     "曾昆4-9周彪4-9/_进度.md",
@@ -201,7 +197,6 @@
     "Recording 20260411141311.m4a",
     "曾昆4-9周彪4-9/7.4 集群控制与远程管控.md",
     "曾昆4-9周彪4-9/7.3 智能分析与AI大辅助决策.md",
-    "曾昆4-9周彪4-9/订单.md",
-    "未命名 1"
+    "曾昆4-9周彪4-9/订单.md"
   ]
 }
