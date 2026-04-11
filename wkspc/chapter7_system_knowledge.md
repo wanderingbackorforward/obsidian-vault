@@ -356,11 +356,172 @@ def get_repo():
 ### 10.7 Agent洞察 (07_agent_insights.sql)
 - **insights表**：insight_type(DEFAULT 'anomaly'), severity(DEFAULT 'info'), point_id, title, body, evidence(JSONB), suggestion, acknowledged, dismissed
 
-## 十一、章节对应关系
+## 十一、7.1专项：认证授权与模块管理
 
-| 章节 | 系统对应模块 |
-|------|-------------|
-| 7.1 系统功能与平台架构 | 整体架构、技术栈、Vercel部署、前后端分离、三层架构 |
-| 7.2 数据智能采集与融合 | data_import/(Excel/MDB导入)、insar/(卫星数据)、传感器数据处理、MySQL→Supabase数据流 |
-| 7.3 智能分析与AI决策 | ml_models/(Informer/PINN/STGCN/异常检测/Prophet/SHAP/因果推断/数字孪生)、assistant/(ReAct Agent+知识图谱) |
-| 7.4 集群控制与远程管控 | 移动端Capacitor、工单系统、实时监控页面、盾构轨迹、3D模型 |
+### 11.1 认证授权 (AuthContext.tsx)
+- **RBAC三角色**：admin, user, guest
+- **环境开关**：VITE_AUTH_ENABLED控制是否启用认证
+- **AuthGuard**：路由级权限守卫，未登录重定向
+- **持久化**：localStorage存储用户信息，支持skipLogin()跳过登录
+
+### 11.2 动态模块管理 (ModulesContext.tsx + ModuleGate.tsx + ModuleAdmin.tsx)
+- **模块状态**：'developed'（已开发）/ 'pending'（待开发）
+- **ModuleGate**：包裹页面组件，pending模块显示自定义弹窗提示
+- **ModuleAdmin**：管理后台，切换模块状态，记录updatedBy/reason审计字段
+- **数据源**：`/api/modules`端点 + localStorage缓存 + 内置fallback模块列表
+- **自动重试**：API获取失败时自动重试
+
+### 11.3 API客户端架构
+- **api.ts**：基础HTTP方法（apiGet/apiPost/apiPatch），500错误自动重试（1.5s延迟），响应信封解析
+- **apiClient.ts**：端点级降级机制——连续2次失败后激活mock模式，30秒冷却后重试
+- **mlApi.ts**：ML专用客户端（mlAutoPredict/mlPredict/mlCompareModels/mlDetectAnomalies/mlEventImpact）
+
+### 11.4 状态管理
+- **Zustand**：agentStore（AI洞察，30秒去抖获取，乐观更新acknowledge/dismiss）
+- **Context API**：AuthContext, ModulesContext, LayoutContext（响应式断点：mobile/tablet/desktop）
+- **localStorage持久化**：各领域数据（settlement/temperature/cracks/vibration/overview）
+
+### 11.5 移动端适配
+- **检测方式**：`VITE_MOBILE === 'true'`环境变量（非运行时检测）
+- **移动模式**：强制'new'视图模式，禁用视图偏好切换
+- **LayoutContext**：支持mobile/tablet/desktop三档断点，每档独立布局配置
+
+## 十二、7.2专项：数据采集与融合详细流程
+
+### 12.1 数据导入管线
+| 数据类型 | 格式 | 导入函数 | 处理细节 |
+|----------|------|----------|----------|
+| 沉降 | Excel(.xlsx/.xls) | import_excel_to_mysql() | 首列重命名measurement_date，日期格式%y/%m/%d %H:%M |
+| 裂缝 | Excel(.xlsx/.xls) | import_crack_excel() | 动态建表，过滤max/min行，ALTER TABLE自动补列 |
+| 温度 | MDB/ACCDB(Access) | import_mdb_to_mysql() | 查询Sensor/MCU/Data表，ST2='温度'过滤，5万条批量导入，R2→temperature映射 |
+| 振动 | Binary/CSV | /api/vibration/upload | 存入vibration_datasets/channels/features三表 |
+
+### 12.2 文件上传机制
+- **端点**：`POST /api/upload`(沉降), `/api/crack/upload`(裂缝), `/api/temperature/upload`(温度), `/api/vibration/upload`(振动)
+- **限制**：MAX_CONTENT_LENGTH=10MB，允许xlsx/xls/mdb/accdb
+- **流程**：上传 → secure_filename+时间戳 → 后台线程异步处理 → 数据库写入 → task_id状态追踪
+- **存储**：临时文件存入`/temp_uploads`
+
+### 12.3 InSAR卫星数据处理
+- **Shapefile→GeoJSON**：pyshp读取.shp → 自动推断值字段（vel/velocity/rate/value/los/disp/deformation或D_YYYYMMDD模式）→ geometry_to_lonlat()坐标转换
+- **DBSCAN聚类**：网格优化DBSCAN（eps=50m, min_pts=6）→ 按速率阈值分类（danger_subsidence/warning_subsidence/danger_uplift/warning_uplift）→ 凸包生成区域多边形
+- **位移时序**：正则匹配`D_\d{8}`字段 → 按时间排序 → 返回逐点位移序列
+- **缓存**：磁盘文件缓存机制
+
+### 12.4 Supabase数据获取层 (supabase_data.py)
+- REST API + Bearer Token认证
+- fetch_point_settlement()：单点沉降
+- fetch_all_settlement()：分页获取（offset/limit=1000）
+- fetch_settlement_point_ids()：去重点位列表
+- fetch_monitoring_points()：监测点坐标(x_coord, y_coord)
+
+## 十三、7.3专项：智能分析与AI决策工作流
+
+### 13.1 ML API延迟加载策略 (api.py)
+- **条件导入**：路由级延迟导入，仅调用时加载重型依赖（sklearn/PyTorch/statsmodels）
+- **可用性标志**：PROPHET_AVAILABLE, INFORMER_AVAILABLE, STGCN_AVAILABLE, PINN_AVAILABLE, ENSEMBLE_AVAILABLE, SHAP_AVAILABLE
+- **轻量替代**：LightweightInformer/STGCN/PINN/Ensemble（纯sklearn实现）
+- **Prophet替代**：ExponentialSmoothing（statsmodels）
+- **Mock降级**：不可用时返回200 + `mock:true`标志，前端不报错
+
+### 13.2 预测请求全链路
+```
+前端 mlAutoPredict(pointId, steps, metric)
+  → GET /api/ml/auto-predict/{pointId}?steps=30&metric=mae
+  → 后端 fetch_point_settlement() 获取数据
+  → model_selector.evaluate_models() 自动选模型
+  → 返回 {success, selected_model, forecast:{dates,values,lower_bound,upper_bound}, model_selection_info}
+```
+
+### 13.3 异常检测工作流
+- **双模型**：Isolation Forest（默认，contamination=5%）+ LOF（新颖性检测）
+- **8维特征工程**：沉降值、日沉降速率、7日移动均值、7日波动率(std)、加速度(二阶导)、偏离均线、14日均线(长期趋势)、趋势差(短-长)
+- **严重度分级**：Critical/High/Medium/Low（基于百分位数）
+- **异常类型**：Spike(突变)、Acceleration(加速)、Volatility(波动)、Trend deviation(趋势偏离)
+- **API**：`GET /api/ml/anomalies/{point_id}`(单点), `POST /api/ml/anomalies/batch`(批量)
+
+### 13.4 高级分析页面模块 (AdvancedAnalysis.tsx)
+- **问题发现**：AnomalyDashboard（扫描25个点，红/橙/黄/绿分级）
+- **趋势预测**：PredictionDashboard（7-30天沉降预测）
+- **深度学习**：DeepLearningDashboard（Informer/STGCN/PINN）
+- **根因分析**：CorrelationDashboard（因果推断+空间分析）
+- **可解释性**：ExplainabilityDashboard（SHAP特征重要性）
+- **知识图谱**：KnowledgeGraphDashboard（文档管理+KGQA问答）
+
+### 13.5 风险预警系统
+- **端点**：`GET /api/risk/alerts`
+- **触发逻辑**：get_all_predictions_summary()聚合 → 筛选risk_level∈{critical,high,medium} → 按risk_score降序排列
+- **数据源**：沉降预测vs阈值 + 异常检测结果 + 空间关联异常 + 历史趋势分析
+- **输出**：各级别计数 + 总监测点数 + 量化风险分数
+
+### 13.6 AI助手前端集成 (FloatingAssistant.tsx)
+- **入口**：右下角浮动按钮（青色渐变）→ AssistantPanel
+- **对话管理**：ConversationService管理历史
+- **流式响应**：SSE（Server-Sent Events）实时推送
+- **后端组件**：agent_loop.py(推理循环) + agent_tools.py(工具定义) + intent_classifier.py(意图路由) + stream_agent.py(SSE流式) + knowledge_graph_nx.py(知识图谱)
+- **分析联动**：助手可触发ML预测、异常检测、因果分析，基于当前监测状态提供上下文感知建议
+
+## 十四、7.4专项：集群控制与远程管控
+
+### 14.1 移动端应用 (Capacitor 6)
+- **App ID**：com.settlement.digitaltwin
+- **Web目录**：www（VITE_MOBILE=true编译的前端）
+- **Android配置**：HTTPS scheme，允许混合内容
+- **后端地址**：Vercel托管API（https://...vercel.app/api）
+- **架构**：Web-first方案，同一React代码库编译为Android APK，无原生插件依赖
+
+### 14.2 工单系统完整生命周期
+- **状态机**：PENDING → IN_PROGRESS → SUSPENDED/RESOLVED → CLOSED/REJECTED
+- **角色权限**：can_transition_status()按角色(operator/admin)校验状态转换合法性
+- **自动生成**：`/tickets/alert-trigger`端点，告警类型(settlement/crack/equipment)映射为工单类型
+- **工单类型**：SETTLEMENT_ALERT, CRACK_ALERT, EQUIPMENT_FAULT, MAINTENANCE, INSPECTION, DATA_ANALYSIS
+- **SLA**：各类型2-24小时不等
+- **自动编号**：TicketModel.create_ticket()自增编号，默认截止日期+2天
+- **状态追踪**：metadata中记录状态变更历史（时间戳+用户ID）
+- **NLP快捷输入**：_parse_quick_input_rule_based()规则解析（如"DB-001 沉降 15mm"）
+- **邮件通知**：创建(notify_ticket_created)、状态变更(notify_status_changed)、指派(notify_ticket_assigned)
+- **定时调度**：后台线程监控即将到期(24h)和逾期工单，发送提醒，7天后自动归档
+
+### 14.3 3D模型可视化 (ThreeModel.tsx)
+- **架构**：iframe嵌入`/static/three_test.html?embedded=1`
+- **渲染引擎**：Three.js独立运行于静态HTML
+- **模型格式**：GLB/GLTF，Cache-Control: 1年
+- **解耦设计**：3D渲染与React应用解耦，独立运行
+
+### 14.4 盾构机轨迹追踪 (ShieldTrajectory.tsx)
+- **三标签页**：轨迹总览、偏差分析、风险管控
+- **数据端点**：
+  - `/tunnel/trajectory/deviation` → 逐环偏差记录(ring_no, x/y/z, h_dev/v_dev)
+  - `/tunnel/trajectory/summary` → 当前环号、总长度、最大偏差、状态
+  - `/tunnel/trajectory/correction` → 纠偏建议、整体状态(正常/需关注/异常)
+  - `/tunnel/trajectory/prediction` → ML预测（懒加载）
+  - `/tunnel/risk/bins` → 风险分箱(20m默认)
+- **环级追踪**：按环号选择，快速跳转输入
+- **偏差剖面**：水平偏差(h_dev)+垂直偏差(v_dev)，含min/max边界
+- **风险管理**：隧道按20m分段，计算风险分数，识别高风险区域
+- **演示数据**：`/tunnel/trajectory/seed-demo`自动生成合成数据
+
+### 14.5 总览仪表盘 (OverviewV2.tsx)
+- **刷新机制**：5分钟自动刷新 + 手动刷新
+- **三面板布局**：
+  1. **诊断横幅(52px)**：健康分数(0-100)、一句话诊断、数据质量条
+  2. **证据画布(ECharts)**：力导向图展示因果关系，节点按类别着色(沉降/裂缝/温度/地质/施工)，交互式节点选择
+  3. **行动面板(340px侧栏)**：角色分标签——施工指令(按紧急度：立即/今日/本周)、科研洞察(Terzaghi指标/Moran指标/异常置信雷达)、管理概览(趋势摘要/30天预测分布/关键指标)
+- **诊断引擎**：diagnose()函数，输入点位数据+异常 → 输出健康等级、证据节点/链接、角色行动项
+
+### 14.6 隧道管理 (Tunnel.tsx)
+- **层级导航**：项目 → 线路(alignment) → 风险分箱
+- **风险分箱**：可配置分箱大小(默认20m)，计算每箱风险分数
+- **KML支持**：加载隧道轨迹(YGL_KML.kml)，橙色线显示于Leaflet地图
+- **线路预览**：青色GeoJSON LineString叠加，自动适配地图边界
+- **自动工单**：`/tunnel/risk/auto-tickets`端点，超过阈值(默认70分)自动创建工单
+- **风险可视化**：折线图(里程vs风险分数) + Top-8高风险分箱表(含原因)
+
+## 十五、章节对应关系（更新版）
+
+| 章节 | 系统对应模块 | 关键技术点 |
+|------|-------------|-----------|
+| 7.1 系统功能与平台架构 | 整体架构、技术栈、Vercel部署、前后端分离、三层架构 | RBAC认证、动态模块管理、API降级机制、响应式布局 |
+| 7.2 数据智能采集与融合 | data_import/(Excel/MDB导入)、insar/(卫星数据)、传感器数据处理 | 多源异构数据融合、DBSCAN聚类、异步导入、数据库工厂模式 |
+| 7.3 智能分析与AI决策 | ml_models/(26个模型)、assistant/(ReAct Agent+知识图谱) | 延迟加载、轻量替代、8维特征工程、全链路预测、风险预警 |
+| 7.4 集群控制与远程管控 | 移动端Capacitor、工单系统、总览仪表盘、盾构轨迹、隧道管理 | 工单状态机、角色行动面板、环级偏差追踪、自动工单生成 |
