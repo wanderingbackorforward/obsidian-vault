@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "mcp__mochow-13-google-scholar-mcp__search_google_scholar",
-      "mcp__web-search-prime__web_search_prime"
-    ]
-  }
-}
