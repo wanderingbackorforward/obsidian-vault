@@ -3,5 +3,6 @@
   "obsidian-git",
   "obsidian-style-settings",
   "obsidian-tasks-plugin",
-  "obsidian-pandoc"
+  "obsidian-pandoc",
+  "cm-chs-patch"
 ]
