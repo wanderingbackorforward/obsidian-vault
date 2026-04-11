@@ -1,4 +1,4 @@
-cd "D:\mine\mynotes\obsidian-vault\wkspc"
+cd "D:\mine\mynotes\obsidian-vault\曾昆4-9周彪4-9\skills"
 
 $env:ANTHROPIC_AUTH_TOKEN="sk-i43P96HyNcFEeHoAq8hh7iWDldwO2ADFij5584Z3xGU980dq"
 $env:ANTHROPIC_BASE_URL="https://www.fucheers.top"
