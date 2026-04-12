@@ -129,6 +129,29 @@
   - 数据持久层：Supabase PostgreSQL(REST API) ↔ MySQL(直连)，工厂模式切换
   - 层间通信：HTTP/REST
   - 具体技术标注：懒加载路由、响应式布局、ECharts/Leaflet/Three.js
+- **【结构拆解（完全展开，可直接用于绘图）】**：
+  - **[第一层] 表现层（Vercel 静态托管）**
+    - [组件1.1] React 18 + TypeScript 单页应用（SPA）
+    - [组件1.2] 懒加载路由（仅访问时加载对应页面）
+    - [组件1.3] Tailwind CSS 响应式布局（多端适配）
+    - [组件1.4] 三类可视化引擎并列：
+      - ECharts（沉降曲线、温度场、振动频谱）
+      - Leaflet（InSAR形变、隧道线路空间展示）
+      - Three.js（隧道结构三维数字孪生）
+    - [组件1.5] Capacitor封装 → Android移动巡检APK
+    - [部署节点] Vercel 静态托管
+  - **[层间通信]** HTTP / RESTful API
+  - **[第二层] 业务逻辑层（Vercel Serverless Functions）**
+    - [组件2.1] Flask RESTful API 服务
+    - [组件2.2] 15个独立服务模块（各自独立的数据处理与接口逻辑）
+    - [组件2.3] ML模型集成（Scikit-learn、PyTorch）
+    - [组件2.4] NumPy / SciPy / Pandas 数据预处理
+    - [部署节点] Vercel Serverless Functions（maxDuration=60s）
+  - **[层间通信]** REST API（云端）/ 直连（本地）
+  - **[第三层] 数据持久层（双模式）**
+    - [左侧-云端模式] Supabase PostgreSQL，通过REST API访问，适用于云端部署阶段
+    - [右侧-本地模式] MySQL，直连访问，适用于企业内网/施工现场离线环境
+    - [切换机制] 配置驱动自动切换，工厂模式，上层业务完全透明
 - **与知识文件的对应依据**：knowledge.md 第二节技术栈表、三-B后端API路由架构中Vercel部署配置（maxDuration=60s, SPA rewrite）
 - **对 Figma AI 提示词的限制条件**：
   - 需新建
