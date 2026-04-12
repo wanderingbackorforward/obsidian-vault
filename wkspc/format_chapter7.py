@@ -65,17 +65,12 @@ def add_heading(doc, text, level):
     return para
 
 def add_body(doc, text):
-    """正文：宋体/TNR 小四12pt 首行缩进2字符 ~22pt行距"""
+    """正文：宋体/TNR 小四12pt 首行缩进2字符 ~22pt行距，去除所有加粗标记"""
     para = doc.add_paragraph()
-    # 处理加粗标记
-    parts = re.split(r'(\*\*.*?\*\*)', text)
-    for part in parts:
-        if part.startswith('**') and part.endswith('**'):
-            r = para.add_run(part[2:-2])
-            set_run_font(r, "宋体", "Times New Roman", 12, bold=True)
-        else:
-            r = para.add_run(part)
-            set_run_font(r, "宋体", "Times New Roman", 12, bold=False)
+    # 去掉 markdown 加粗标记，正文不需要加粗
+    clean = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+    r = para.add_run(clean)
+    set_run_font(r, "宋体", "Times New Roman", 12, bold=False)
     set_first_line_indent(para, 2)
     set_paragraph_spacing(para, before_pt=0, after_pt=0, line_spacing_pt=22)
     return para
