@@ -1,5 +1,5 @@
 """
-将 7.1_draft.md、7.2_draft.md、7.3_draft.md 合并并生成符合论文排版规范的 docx。
+将 7.1_draft.md、7.2_draft.md、7.3_draft.md、7.4_draft.md 合并并生成符合论文排版规范的 docx。
 """
 import re, os, io
 from docx import Document
@@ -10,7 +10,7 @@ from docx.oxml import OxmlElement
 from PIL import Image, ImageDraw, ImageFont
 
 WORK = r"D:\mine\mynotes\obsidian-vault\wkspc"
-FILES = ["7.1_draft.md", "7.2_draft.md", "7.3_draft.md"]
+FILES = ["7.1_draft.md", "7.2_draft.md", "7.3_draft.md", "7.4_draft.md"]
 OUT_DIR = f"{WORK}\\chapter7_output"        # 统一输出文件夹
 OUTPUT = f"{OUT_DIR}\\chapter7_final.docx"
 PLACEHOLDER_DIR = f"{OUT_DIR}\\placeholders"
