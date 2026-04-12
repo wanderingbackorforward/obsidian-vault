@@ -35,7 +35,8 @@
               "title": "task.md"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -196,42 +197,43 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "5580c3bdc0cc3f37",
+  "active": "72cf4a8cb17e7cca",
   "lastOpenFiles": [
-    "task.md.md",
+    "wkspc/node_modules/xml-js/types/xml-js-tests.ts",
+    "wkspc/node_modules/xml-js/types/tsconfig.json",
+    "wkspc/node_modules/xml-js/types/typings.json",
+    "wkspc/node_modules/xml-js/types/index.d.ts",
+    "wkspc/node_modules/xml-js/types",
+    "wkspc/node_modules/xml/test/xml.test.js",
+    "wkspc/node_modules/xml/test",
+    "wkspc/node_modules/xml/lib/escapeForXML.js",
+    "wkspc/node_modules/xml/lib/xml.js",
+    "wkspc/node_modules/xml/lib",
+    "wkspc/node_modules/string_decoder/lib/string_decoder.js",
+    "wkspc/node_modules/docx/README.md",
+    "wkspc/node_modules/pako/README.md",
+    "wkspc/node_modules/pako/CHANGELOG.md",
+    "wkspc/node_modules/xml-js/README.md",
+    "wkspc/node_modules/lie/README.md",
+    "wkspc/node_modules/minimalistic-assert/readme.md",
+    "wkspc/node_modules/hash.js/README.md",
+    "wkspc/node_modules/string_decoder/README.md",
+    "wkspc/node_modules/process-nextick-args/readme.md",
+    "wkspc/node_modules/util-deprecate/History.md",
+    "wkspc/node_modules/util-deprecate/README.md",
     "曾昆4-9周彪4-9/AI_START.md",
-    "wkspc/~$2_draft.docx",
-    "wkspc/~$1_draft.docx",
-    "wkspc/7.2_draft.docx",
-    "wkspc/7.1_draft.docx",
+    "task.md.md",
     "wkspc/7.2_draft.md",
     "wkspc/7.1_draft.md",
     "wkspc/写作计划.md",
     "曾昆4-9周彪4-9/skills/thesis-writing-style/references/软件+土木毕业论文.md",
-    "曾昆4-9周彪4-9/skills/thesis-writing-style/references/软件+土木毕业论文.docx",
     "曾昆4-9周彪4-9/skills/thesis-writing-style 技能专项改进：土木工程+软件系统写作平衡.md",
-    "曾昆4-9周彪4-9/skills/新建 文本文档.txt",
     "曾昆4-9周彪4-9/skills/软件+土木毕业论文.md",
-    "曾昆4-9周彪4-9/skills/~$+土木毕业论文.docx",
     "wkspc/chapter7_system_knowledge.md",
     "wkspc/task.md",
-    "wkspc/新建 文本文档.txt",
     "曾昆4-9周彪4-9/7.4 集群控制与远程管控.md",
     "曾昆4-9周彪4-9/7.3 智能分析与AI大辅助决策.md",
     "曾昆4-9周彪4-9/7.2 数据智能采集与融合.md",
-    "曾昆4-9周彪4-9/7.1 系统功能与平台架构.md",
-    "曾昆4-9周彪4-9/skills/软件+土木毕业论文.docx",
-    "曾昆4-9周彪4-9/skills/毕业论文0619（朱文杰）.docx",
-    "曾昆4-9周彪4-9/skills/thesis-writing-style/SKILL.md",
-    "曾昆4-9周彪4-9/skills/thesis-writing-style/references/范文.md",
-    "曾昆4-9周彪4-9/skills/thesis-formatting/references/排版规范.md",
-    "曾昆4-9周彪4-9/skills/thesis-formatting/SKILL.md",
-    "曾昆4-9周彪4-9/skills/SKILL.md",
-    "曾昆4-9周彪4-9/skills/references/排版规范.md",
-    "曾昆4-9周彪4-9/skills/CLAUDE.md",
-    "曾昆4-9周彪4-9/skills/claude.md",
-    "曾昆4-9周彪4-9/skills/范文.md",
-    "曾昆4-9周彪4-9/skills/排版规范.md",
-    "曾昆4-9周彪4-9/skills/课题五年度科技报告目录、正文-2025.11V2.md"
+    "曾昆4-9周彪4-9/7.1 系统功能与平台架构.md"
   ]
 }
