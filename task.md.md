@@ -3,3 +3,5 @@ task.md根据该文件继续完成任务 目前第一部分知识库已经初步
 是写 先写 然后改
 
 7.1_draft.md转成docx且符合thesis-formattingskill他要求：ps对于docx我是有skill帮你处理的
+
+你之前方式问题是：
