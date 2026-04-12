@@ -8,20 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5580c3bdc0cc3f37",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "曾昆4-9周彪4-9/AI_START.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "AI_START"
-            }
-          },
-          {
             "id": "452826f43e98e01c",
             "type": "leaf",
             "state": {
@@ -210,10 +196,11 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "5580c3bdc0cc3f37",
+  "active": "452826f43e98e01c",
   "lastOpenFiles": [
-    "wkspc/chapter7_图片清单.md",
+    "wkspc/pictures_task.md",
     "曾昆4-9周彪4-9/AI_START.md",
+    "wkspc/chapter7_图片清单.md",
     "wkspc/图片提示词_工作笔记.md",
     "wkspc/chapter7_output/~$apter7_final.docx",
     "wkspc/chapter7_output/figure_list.txt",
@@ -256,7 +243,6 @@
     "wkspc/node_modules/pako/README.md",
     "wkspc/node_modules/pako/CHANGELOG.md",
     "wkspc/node_modules/xml-js/README.md",
-    "wkspc/node_modules/lie/README.md",
-    "wkspc/node_modules/minimalistic-assert/readme.md"
+    "wkspc/node_modules/lie/README.md"
   ]
 }
