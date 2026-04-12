@@ -1,18 +1,90 @@
 """
 将 7.1_draft.md、7.2_draft.md、7.3_draft.md 合并并生成符合论文排版规范的 docx。
 """
-import re
+import re, os, io
 from docx import Document
 from docx.shared import Pt, Cm, Emu
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
+from PIL import Image, ImageDraw, ImageFont
 
 WORK = r"D:\mine\mynotes\obsidian-vault\wkspc"
 FILES = ["7.1_draft.md", "7.2_draft.md", "7.3_draft.md"]
 OUTPUT = f"{WORK}\\chapter7_final.docx"
+PLACEHOLDER_DIR = f"{WORK}\\placeholders"  # 占位图临时目录
 
 # ── helpers ──────────────────────────────────────────────
+
+# 收集所有图片信息，用于生成图名列表
+figure_list = []
+
+def create_placeholder_image(fig_id, fig_caption, width_cm=13, height_cm=8):
+    """生成占位图：灰底白框，中间显示图号，保存为 PNG。
+    返回图片文件路径。"""
+    os.makedirs(PLACEHOLDER_DIR, exist_ok=True)
+    dpi = 150
+    w_px = int(width_cm / 2.54 * dpi)
+    h_px = int(height_cm / 2.54 * dpi)
+
+    img = Image.new('RGB', (w_px, h_px), color=(230, 230, 230))
+    draw = ImageDraw.Draw(img)
+
+    # 白色边框
+    draw.rectangle([10, 10, w_px - 11, h_px - 11], outline=(180, 180, 180), width=2)
+
+    # 中央文字（图号）
+    label = fig_id  # e.g. "图7-1"
+    try:
+        font = ImageFont.truetype("msyh.ttc", 36)  # 微软雅黑
+    except Exception:
+        try:
+            font = ImageFont.truetype("simsun.ttc", 36)
+        except Exception:
+            font = ImageFont.load_default()
+    bbox = draw.textbbox((0, 0), label, font=font)
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    draw.text(((w_px - tw) / 2, (h_px - th) / 2 - 20), label, fill=(120, 120, 120), font=font)
+
+    # 副标题（提示替换）
+    hint = "[ 请替换为实际图片 ]"
+    try:
+        font_sm = ImageFont.truetype("msyh.ttc", 20)
+    except Exception:
+        try:
+            font_sm = ImageFont.truetype("simsun.ttc", 20)
+        except Exception:
+            font_sm = ImageFont.load_default()
+    bbox2 = draw.textbbox((0, 0), hint, font=font_sm)
+    tw2 = bbox2[2] - bbox2[0]
+    draw.text(((w_px - tw2) / 2, (h_px - th) / 2 + 30), hint, fill=(160, 160, 160), font=font_sm)
+
+    filepath = os.path.join(PLACEHOLDER_DIR, f"{fig_id}.png")
+    img.save(filepath, 'PNG')
+    return filepath
+
+def add_figure_placeholder(doc, fig_id, fig_caption, fig_filename):
+    """插入占位图（居中，宽13cm）+ 图题。同时记录到 figure_list。"""
+    # 记录图片信息
+    figure_list.append({
+        'id': fig_id,
+        'caption': fig_caption,
+        'original_file': fig_filename,
+    })
+
+    # 生成并插入占位图
+    placeholder_path = create_placeholder_image(fig_id, fig_caption)
+    para_img = doc.add_paragraph()
+    para_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = para_img.add_run()
+    run.add_picture(placeholder_path, width=Cm(13))
+    # 图片段落行距设为单倍，段前6磅
+    set_paragraph_spacing(para_img, before_pt=6, after_pt=0, line_spacing_pt=16)
+
+    # 插入图题（图下方）
+    add_figure_caption(doc, fig_caption)
+
+    return para_img
 def set_run_font(run, cn_font="宋体", en_font="Times New Roman", size_pt=12, bold=False):
     run.bold = bold
     run.font.size = Pt(size_pt)
@@ -216,13 +288,17 @@ def process_lines(doc, lines):
             i += 1
             continue
 
-        # skip image lines (![...](...)...)  -- we'll add caption separately
+        # handle image lines (![caption](path){#ref})  -- insert placeholder + caption
         if re.match(r'^!\[', stripped):
-            # extract caption text
-            m = re.match(r'!\[(.*?)\]', stripped)
+            # extract caption and filename
+            m = re.match(r'!\[(.*?)\]\((.*?)\)', stripped)
             if m:
-                cap = m.group(1)
-                add_figure_caption(doc, cap)
+                cap = m.group(1)        # e.g. "图7-1 系统总体架构图"
+                fig_file = m.group(2)   # e.g. "figures/fig7-1_system_architecture.png"
+                # 提取图号（如 "图7-1"）
+                fig_id_match = re.match(r'(图\d+-\d+)', cap)
+                fig_id = fig_id_match.group(1) if fig_id_match else cap.split()[0]
+                add_figure_placeholder(doc, fig_id, cap, fig_file)
             i += 1
             continue
 
@@ -382,6 +458,22 @@ def main():
 
     doc.save(OUTPUT)
     print(f"Done → {OUTPUT}")
+
+    # 生成图名列表，方便用户查找和替换占位图
+    list_path = f"{WORK}\\figure_list.txt"
+    with open(list_path, 'w', encoding='utf-8') as f:
+        f.write("=" * 70 + "\n")
+        f.write("  第7章 图片列表 — 占位图替换指南\n")
+        f.write("=" * 70 + "\n\n")
+        f.write("在Word中双击占位图即可替换为实际图片。\n")
+        f.write("占位图文件保存在: placeholders\\ 文件夹中。\n\n")
+        f.write(f"{'序号':<6}{'图号':<10}{'图题':<35}{'原始文件名'}\n")
+        f.write("-" * 70 + "\n")
+        for idx, fig in enumerate(figure_list, 1):
+            f.write(f"{idx:<6}{fig['id']:<10}{fig['caption']:<35}{fig['original_file']}\n")
+        f.write("-" * 70 + "\n")
+        f.write(f"\n共 {len(figure_list)} 张图片需要替换。\n")
+    print(f"Figure list → {list_path}")
 
 if __name__ == "__main__":
     main()
