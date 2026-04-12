@@ -212,6 +212,14 @@
   },
   "active": "5580c3bdc0cc3f37",
   "lastOpenFiles": [
+    "wkspc/7.4_draft_new.md",
+    "wkspc/_7.4_part7_summary.md",
+    "wkspc/_7.4_part6_dashboard.md",
+    "wkspc/_7.4_part5_shield.md",
+    "wkspc/_7.4_part4_3d.md",
+    "wkspc/_7.4_part3_ticket.md",
+    "wkspc/_7.4_part2_mobile.md",
+    "wkspc/_7.4_part1_intro.md",
     "task.md.md",
     "wkspc/chapter7_output/figure_list.txt",
     "wkspc/chapter7_output/chapter7_final.docx",
@@ -249,13 +257,6 @@
     "wkspc/node_modules/hash.js/README.md",
     "wkspc/node_modules/string_decoder/README.md",
     "wkspc/node_modules/process-nextick-args/readme.md",
-    "wkspc/node_modules/util-deprecate/History.md",
-    "wkspc/node_modules/util-deprecate/README.md",
-    "wkspc/7.2_draft.md",
-    "wkspc/7.1_draft.md",
-    "wkspc/写作计划.md",
-    "曾昆4-9周彪4-9/skills/thesis-writing-style/references/软件+土木毕业论文.md",
-    "曾昆4-9周彪4-9/skills/thesis-writing-style 技能专项改进：土木工程+软件系统写作平衡.md",
-    "曾昆4-9周彪4-9/skills/软件+土木毕业论文.md"
+    "wkspc/node_modules/util-deprecate/History.md"
   ]
 }
