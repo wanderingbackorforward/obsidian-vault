@@ -517,7 +517,63 @@ def get_repo():
 - **自动工单**：`/tunnel/risk/auto-tickets`端点，超过阈值(默认70分)自动创建工单
 - **风险可视化**：折线图(里程vs风险分数) + Top-8高风险分箱表(含原因)
 
-## 十五、章节对应关系（更新版）
+## 十五、7.3深挖补充（第6次迭代）
+
+### 15.1 ML API延迟加载完整标志清单
+共11个可用性标志：PROPHET_AVAILABLE, INFORMER_AVAILABLE, STGCN_AVAILABLE, PINN_AVAILABLE, ENSEMBLE_AVAILABLE, LIGHTWEIGHT_AVAILABLE, SHAP_AVAILABLE, NEO4J_AVAILABLE, SUPABASE_KG_AVAILABLE, CAUSAL_REASONING_AVAILABLE, KGQA_AVAILABLE
+
+**轻量替代策略**：
+- Prophet不可用 → ExponentialSmoothing(statsmodels)
+- Informer不可用 → LightweightInformer(GradientBoostingRegressor + 滞后特征lags1-7)
+- STGCN不可用 → LightweightSTGCN(RandomForestRegressor + 5最近邻特征)
+- PINN不可用 → LightweightPINN(GradientBoostingRegressor × (1-physics_weight) + Terzaghi公式 × physics_weight)
+- Ensemble不可用 → LightweightEnsemble(GB + RF + 二次多项式 加权平均)
+- 全部不可用 → Mock降级(random生成合理数据, mock:true标志)
+
+### 15.2 模型选择器完整流程
+ModelSelector类：
+1. analyze_data_characteristics(data) → 提取6特征(data_size, trend_strength/R², volatility/CV, seasonality_strength, stationarity, outlier_ratio)
+2. recommend_model(characteristics) → 规则推荐(N<30→线性回归, 高波动→ARIMA, N≥100→Prophet)
+3. evaluate_models(data, test_size=0.2) → 80/20划分, 逐模型回测
+4. select_best_model(data, metric='mae') → 贪心选择最低MAE
+- 4类基础模型：linear_regression, arima, sarima, prophet
+- auto_predict()入口：先查training_results.json缓存 → 否则实时选择
+
+### 15.3 异常检测完整参数
+8维特征：settlement, daily_rate(一阶差分), ma_7(7日均), std_7(7日标准差), acceleration(二阶差分), deviation(偏离均线), ma_14(14日均), trend_diff(短-长趋势差)
+- IsolationForest: contamination=0.05, n_estimators=100, random_state=42
+- LOF: contamination=0.05, novelty=True, n_neighbors=20
+- 严重度：基于异常分数百分位(25%→critical, 50%→high, 75%→medium, else→low)
+- 异常类型判据：spike(daily_rate>0.5), acceleration(>0.2), volatility(std_7>0.3), trend(deviation>1.0)
+- 最小数据量：10条记录
+
+### 15.4 AI助手ReAct引擎完整参数
+- MAX_ITERATIONS=2, 硬超时45s(同步)/50s(流式)
+- Claude调用: temperature=0.2, max_tokens=4096
+- 工具结果截断: 2000字符上限, 保留top5项
+- 16个工具：list_monitoring_points, query_settlement_data, query_temperature_data, get_temperature_snapshot, evaluate_temperature_risk, plan_temperature_actions, query_crack_data, query_construction_events, detect_anomalies, predict_settlement, build_knowledge_graph, query_knowledge_graph, analyze_correlation, query_anomalies, search_academic_papers, query_analysis_summary
+- 意图分类：keyword+regex快速路由 → 按意图过滤工具子集(1-5个) → 减少token开销
+- SSE事件类型：thinking, tool_start, tool_end, text_delta, done
+- 知识图谱：NetworkX内存图, 节点=监测点, 边=空间近邻/统计相关性
+
+### 15.5 高级分析页面10个标签页（5组）
+- 发现问题：AnomalyDashboard(异常扫描25点), RecommendationDashboard(行动方案)
+- 预测未来：PredictionDashboard(7-30天预测), DeepLearningDashboard(深度学习长期)
+- 追溯原因：CorrelationDashboard(因果+空间), ExplainabilityDashboard(SHAP特征重要性)
+- 综合分析：KnowledgeGraphDashboard(知识图谱+KGQA)
+- 基础图表：ProfileChart, JointDashboard, EventManager
+
+### 15.6 API端点分类汇总（ml_api蓝图）
+- 预测类(6): auto-predict, predict, predict/informer, predict/stgcn, predict/pinn, predict/ensemble
+- 训练类(3): train/informer, train/stgcn, train/pinn
+- 异常类(2): anomalies/{point_id}, anomalies/batch
+- 空间类(3): spatial/correlation, spatial/influence, correlation/multi-factor
+- 因果类(2): causal/event-impact, causal/discover
+- 可解释性(1): explain/{point_id}
+- 知识图谱(8): kg/query/neighbors, kg/query/causal-chain, kg/query/risk-points, kg/stats, kgqa/ask, kg/documents(CRUD)
+- 通用(2): compare-models, health
+
+## 十六、章节对应关系（更新版）
 
 | 章节 | 系统对应模块 | 关键技术点 |
 |------|-------------|-----------|
