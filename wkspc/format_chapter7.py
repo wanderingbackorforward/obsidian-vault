@@ -78,8 +78,17 @@ def add_figure_placeholder(doc, fig_id, fig_caption, fig_filename):
     para_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = para_img.add_run()
     run.add_picture(placeholder_path, width=Cm(13))
-    # 图片段落行距设为单倍，段前6磅
-    set_paragraph_spacing(para_img, before_pt=6, after_pt=0, line_spacing_pt=16)
+    # 图片段落：段前12磅，不设 exact 行距（让图片自然撑高）
+    pPr = para_img._element.get_or_add_pPr()
+    spacing = pPr.find(qn('w:spacing'))
+    if spacing is None:
+        spacing = OxmlElement('w:spacing')
+        pPr.append(spacing)
+    spacing.set(qn('w:before'), str(int(12 * 20)))
+    spacing.set(qn('w:after'), str(int(0 * 20)))
+    # lineRule = auto，让段落高度自适应图片
+    spacing.set(qn('w:lineRule'), 'auto')
+    spacing.set(qn('w:line'), str(240))  # 240 twips = 单倍行距基准
 
     # 插入图题（图下方）
     add_figure_caption(doc, fig_caption)
