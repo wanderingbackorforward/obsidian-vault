@@ -472,8 +472,7 @@ def main():
     print(f"Done → {OUTPUT}")
 
     # 生成图名列表，方便用户查找和替换占位图
-    list_path = f"{WORK}\\figure_list.txt"
-    with open(list_path, 'w', encoding='utf-8') as f:
+    with open(FIGURE_LIST, 'w', encoding='utf-8') as f:
         f.write("=" * 70 + "\n")
         f.write("  第7章 图片列表 — 占位图替换指南\n")
         f.write("=" * 70 + "\n\n")
@@ -485,7 +484,7 @@ def main():
             f.write(f"{idx:<6}{fig['id']:<10}{fig['caption']:<35}{fig['original_file']}\n")
         f.write("-" * 70 + "\n")
         f.write(f"\n共 {len(figure_list)} 张图片需要替换。\n")
-    print(f"Figure list → {list_path}")
+    print(f"Figure list → {FIGURE_LIST}")
 
 if __name__ == "__main__":
     main()
