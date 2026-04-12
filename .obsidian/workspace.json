@@ -41,16 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wkspc/chapter7_图片清单.md",
+                "file": "wkspc/chapter7_图片提示词.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "chapter7_图片清单"
+              "title": "chapter7_图片提示词"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -211,11 +211,11 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "d9a8fcaf6f2aa9f7",
+  "active": "d135c8d5d273c133",
   "lastOpenFiles": [
-    "wkspc/pictures_worknotes.md",
-    "wkspc/chapter7_图片清单.md",
     "wkspc/chapter7_图片提示词.md",
+    "wkspc/chapter7_图片清单.md",
+    "wkspc/pictures_worknotes.md",
     "wkspc/chapter7_图片提示词 - 副本.md",
     "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/pictures_task - 副本.md",
