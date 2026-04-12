@@ -1,0 +1,35 @@
+======================================================================
+  第7章 图片列表 — 占位图替换指南
+======================================================================
+
+在Word中双击占位图即可替换为实际图片。
+占位图文件保存在: placeholders\ 文件夹中。
+
+序号    图号        图题                                 原始文件名
+----------------------------------------------------------------------
+1     图7-2      图7-2 四大功能域与十五模块划分关系图               figures/fig7-2_functional_domains_modules.png
+2     图7-1      图7-1 系统总体架构图                       figures/fig7-1_system_architecture.png
+3     图7-3      图7-3 前后端分离三层架构部署图                  figures/fig7-3_bs_three_tier_deployment.png
+4     图7-4      图7-4 基于角色的访问控制模型图                  figures/fig7-4_rbac_access_control_model.png
+5     图7-5      图7-5 多源数据采集与融合流程图                  figures/fig7-5_data_collection_flow.png
+6     图7-6      图7-6 多格式批量导入处理流程图                  figures/fig7-6_batch_import_flow.png
+7     图7-7      图7-7 异步文件上传与后台处理时序图                figures/fig7-7_async_upload_sequence.png
+8     图7-8      图7-8 InSAR遥感数据三步处理工作流图             figures/fig7-8_insar_processing_workflow.png
+9     图7-9      图7-9 云端与本地双模式存储架构图                 figures/fig7-9_dual_mode_storage_architecture.png
+10    图7-10     图7-10 智能分析模块架构图                    figures/fig7-10_intelligent_analysis_architecture.png
+11    图7-11     图7-11 机器学习模型三级自适应加载策略图             figures/fig7-11_ml_model_adaptive_loading.png
+12    图7-12     图7-12 沉降预测四步模型自动选择流程图              figures/fig7-12_prediction_model_selection_flow.png
+13    图7-13     图7-13 多维特征工程与双模型协同异常检测流程图          figures/fig7-13_anomaly_detection_engine_flow.png
+14    图7-14     图7-14 高级分析工作台五组功能面板组成图             figures/fig7-14_advanced_analysis_workbench.png
+15    图7-15     图7-15 风险预警与多级自动告警流程图               figures/fig7-15_risk_warning_alert_flow.png
+16    图7-16     图7-16 AI助手ReAct推理流程图               figures/fig7-16_react_reasoning_flow.png
+17    图7-17     图7-17 集群控制与远程管控功能模块关系图             figures/fig7-17_cluster_control_modules.png
+18    图7-18     图7-18 移动端跨平台适配与响应式布局切换示意图          figures/fig7-18_mobile_cross_platform_layout.png
+19    图7-19     图7-19 工单生命周期状态转换图                  figures/fig7-19_ticket_lifecycle.png
+20    图7-20     图7-20 三维数字孪生可视化技术架构图               figures/fig7-20_3d_digital_twin_architecture.png
+21    图7-21     图7-21 盾构掘进轨迹偏差监控与四级评价示意图           figures/fig7-21_shield_trajectory_deviation.png
+22    图7-22     图7-22 项目态势总览仪表盘与健康评分模型图            figures/fig7-22_project_dashboard_health_scoring.png
+23    图7-23     图7-23 隧道断面风险分级管控与工单联动示意图           figures/fig7-23_section_risk_grading_control.png
+----------------------------------------------------------------------
+
+共 23 张图片需要替换。

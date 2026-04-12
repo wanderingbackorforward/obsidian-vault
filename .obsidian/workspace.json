@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "task.md.md",
+                "file": "wkspc/chapter7_图片清单.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "task.md"
+              "title": "chapter7_图片清单"
             }
           },
           {
@@ -213,14 +213,27 @@
   },
   "active": "452826f43e98e01c",
   "lastOpenFiles": [
-    "曾昆4-9周彪4-9/_进度.md",
-    "wkspc/7.1-7.4图片处理.md",
-    "曾昆4-9周彪4-9/AI_START.md",
-    "wkspc/chapter7_output/~$apter7_final.docx",
+    "wkspc/chapter7_output/figure_list.txt",
     "wkspc/chapter7_output/chapter7_final.docx",
+    "wkspc/chapter7_output/placeholders/图7-23.png",
+    "wkspc/chapter7_output/placeholders/图7-22.png",
+    "wkspc/chapter7_output/placeholders/图7-21.png",
+    "wkspc/chapter7_output/placeholders/图7-20.png",
+    "wkspc/chapter7_output/placeholders/图7-19.png",
+    "wkspc/chapter7_output/placeholders/图7-18.png",
+    "wkspc/chapter7_output/placeholders/图7-17.png",
+    "wkspc/chapter7_output/placeholders/图7-16.png",
+    "wkspc/chapter7_output/placeholders/图7-15.png",
+    "wkspc/chapter7_output/placeholders/图7-14.png",
+    "wkspc/chapter7_output/placeholders",
+    "wkspc/chapter7_system_knowledge.md",
+    "task.md.md",
+    "wkspc/chapter7_图片清单.md",
+    "曾昆4-9周彪4-9/_进度.md",
+    "曾昆4-9周彪4-9/AI_START.md",
+    "wkspc/7.1-7.4图片处理.md",
+    "wkspc/chapter7_output/~$apter7_final.docx",
     "wkspc/~$1_draft.docx",
-    "wkspc/chapter7_output/placeholders/图7-6.png",
-    "wkspc/chapter7_output/placeholders/图7-5.png",
     "wkspc/7.4_draft_new.md",
     "wkspc/_7.4_part7_summary.md",
     "wkspc/_7.4_part6_dashboard.md",
@@ -229,21 +242,10 @@
     "wkspc/_7.4_part3_ticket.md",
     "wkspc/_7.4_part2_mobile.md",
     "wkspc/_7.4_part1_intro.md",
-    "task.md.md",
-    "wkspc/chapter7_output/figure_list.txt",
-    "wkspc/chapter7_output/placeholders/图7-4.png",
-    "wkspc/chapter7_output/placeholders/图7-3.png",
-    "wkspc/chapter7_output/placeholders/图7-2.png",
-    "wkspc/chapter7_output/placeholders/图7-1.png",
-    "wkspc/chapter7_output/placeholders",
     "wkspc/chapter7_output",
     "wkspc/~$apter7_final.docx",
     "wkspc/7.4_draft.md",
     "wkspc/figure_list.txt",
-    "wkspc/placeholders/图7-4.png",
-    "wkspc/placeholders/图7-3.png",
-    "wkspc/placeholders/图7-2.png",
-    "wkspc/placeholders/图7-1.png",
     "wkspc/placeholders",
     "wkspc/~$apter7_final_v2.docx",
     "wkspc/7.4_research_notes.md",
@@ -255,9 +257,6 @@
     "wkspc/node_modules/pako/CHANGELOG.md",
     "wkspc/node_modules/xml-js/README.md",
     "wkspc/node_modules/lie/README.md",
-    "wkspc/node_modules/minimalistic-assert/readme.md",
-    "wkspc/node_modules/hash.js/README.md",
-    "wkspc/node_modules/string_decoder/README.md",
-    "wkspc/node_modules/process-nextick-args/readme.md"
+    "wkspc/node_modules/minimalistic-assert/readme.md"
   ]
 }
