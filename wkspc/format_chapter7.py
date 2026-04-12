@@ -11,8 +11,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 WORK = r"D:\mine\mynotes\obsidian-vault\wkspc"
 FILES = ["7.1_draft.md", "7.2_draft.md", "7.3_draft.md"]
-OUTPUT = f"{WORK}\\chapter7_final.docx"
-PLACEHOLDER_DIR = f"{WORK}\\placeholders"  # 占位图临时目录
+OUT_DIR = f"{WORK}\\chapter7_output"        # 统一输出文件夹
+OUTPUT = f"{OUT_DIR}\\chapter7_final.docx"
+PLACEHOLDER_DIR = f"{OUT_DIR}\\placeholders"
+FIGURE_LIST = f"{OUT_DIR}\\figure_list.txt"
 
 # ── helpers ──────────────────────────────────────────────
 
@@ -449,6 +451,7 @@ def process_lines(doc, lines):
 
 # ── main ─────────────────────────────────────────────────
 def main():
+    os.makedirs(OUT_DIR, exist_ok=True)
     doc = Document()
 
     # 页面设置 A4
