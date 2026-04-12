@@ -150,26 +150,20 @@ def preprocess_lines(lines):
         if re.match(r'^\s*-{5,}', l.strip()):
             border_indices.append(idx)
 
-    # 将边框配对（每个表格有3个边框：顶部、分隔、底部）
+    # 每个 pandoc 表格恰好有3条边框线（顶部、分隔、底部），按3个一组配对
     table_ranges = []
     i = 0
-    while i < len(border_indices) - 1:
+    while i + 2 < len(border_indices):
         start = border_indices[i]
-        # 找到连续的边框组（属于同一个表格）
-        # 一个表格至少有2个边框（顶部+底部），通常3个（+分隔线）
-        end = border_indices[i]
-        j = i + 1
-        while j < len(border_indices) and border_indices[j] - border_indices[j-1] < 30:
-            end = border_indices[j]
-            j += 1
+        end = border_indices[i + 2]
         # 往上找表格标题
         caption_start = start
-        for k in range(start - 1, max(start - 3, -1), -1):
+        for k in range(start - 1, max(start - 5, -1), -1):
             if re.match(r'^\*\*表\d+-\d+', lines[k].strip()):
                 caption_start = k
                 break
         table_ranges.append((caption_start, end))
-        i = j
+        i += 3
 
     # 标记表格行
     table_flags = [False] * len(lines)
@@ -290,21 +284,39 @@ def process_lines(doc, lines):
                 i += 1
 
             if not col_ranges:
-                # fallback: try space-split
                 col_ranges = None
 
-            def extract_cols(text_line, ranges):
-                if ranges:
-                    cols = []
-                    for s, e in ranges:
-                        end = min(e, len(text_line))
-                        cols.append(text_line[s:end].strip() if s < len(text_line) else "")
-                    return cols
-                else:
+            def display_width(s):
+                """计算字符串的显示宽度（中文字符宽度为2）"""
+                return sum(2 if ord(c) > 127 else 1 for c in s)
+
+            def extract_cols_by_display_width(text_line, ranges):
+                """按显示宽度位置切割内容行"""
+                if not ranges:
                     return text_line.split()
+                cols = []
+                for col_start, col_end in ranges:
+                    # 遍历字符，按显示宽度累加找到对应位置
+                    char_start = None
+                    char_end = None
+                    dw = 0
+                    for ci, ch in enumerate(text_line):
+                        if dw >= col_start and char_start is None:
+                            char_start = ci
+                        if dw >= col_end:
+                            char_end = ci
+                            break
+                        dw += 2 if ord(ch) > 127 else 1
+                    if char_start is None:
+                        cols.append("")
+                    else:
+                        if char_end is None:
+                            char_end = len(text_line)
+                        cols.append(text_line[char_start:char_end].strip())
+                return cols
 
             # parse headers
-            headers = extract_cols(header_lines[0] if header_lines else "", col_ranges)
+            headers = extract_cols_by_display_width(header_lines[0] if header_lines else "", col_ranges)
 
             # read data rows until bottom border
             data_rows = []
@@ -314,12 +326,17 @@ def process_lines(doc, lines):
                 if is_table_border(dl.strip()):
                     if current_row:
                         data_rows.append(current_row)
+                        current_row = None
                     i += 1
                     break
                 if not dl.strip():
+                    # 空行作为行分隔符，结束当前行
+                    if current_row:
+                        data_rows.append(current_row)
+                        current_row = None
                     i += 1
                     continue
-                cols = extract_cols(dl, col_ranges)
+                cols = extract_cols_by_display_width(dl, col_ranges)
                 # check if this is a continuation (first col empty)
                 if cols and cols[0] == '' and current_row:
                     # merge into current row
