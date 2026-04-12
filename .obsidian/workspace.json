@@ -49,8 +49,7 @@
               "title": "_进度"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -211,8 +210,10 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "452826f43e98e01c",
+  "active": "5580c3bdc0cc3f37",
   "lastOpenFiles": [
+    "wkspc/chapter7_图片清单.md",
+    "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/chapter7_output/~$apter7_final.docx",
     "wkspc/chapter7_output/figure_list.txt",
     "wkspc/chapter7_output/chapter7_final.docx",
@@ -229,9 +230,7 @@
     "wkspc/chapter7_output/placeholders",
     "wkspc/chapter7_system_knowledge.md",
     "task.md.md",
-    "wkspc/chapter7_图片清单.md",
     "曾昆4-9周彪4-9/_进度.md",
-    "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/7.1-7.4图片处理.md",
     "wkspc/~$1_draft.docx",
     "wkspc/7.4_draft_new.md",
