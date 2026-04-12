@@ -277,14 +277,54 @@
 - **该图的表达目的**：将"条件导入→轻量替代→Mock降级"三级逐步降级的加载策略以可视化方式呈现，展示系统在不同运行环境约束下如何逐级回退、始终保证服务可用的自适应机制。
 - **推荐图类型**：分级降级流程图 / 多级回退决策流程图（Multi-level Fallback Flow Diagram）
 - **为什么适合这种图类型**：三级策略的核心逻辑是"尝试→失败→降级到下一级"的逐级回退链，每一级都有明确的判定条件（导入成功/失败）和对应动作，本质上是一个带条件分支的线性决策流程，用流程图最直观。
-- **关键组成元素**：
-  - 触发起点：用户调用某项分析功能API
-  - 第一级-条件导入：路由级延迟导入重型库（PyTorch/statsmodels等），11个布尔可用性标志（Prophet/Informer/STGCN/PINN/Ensemble/SHAP等），导入成功→标志True→使用原始模型
-  - 判定节点：导入是否成功？
-  - 第二级-轻量替代：导入失败→启用sklearn实现的替代模型（LightweightInformer用梯度提升+滞后特征、LightweightSTGCN用随机森林+近邻空间特征、LightweightPINN用梯度提升+Terzaghi物理约束、LightweightEnsemble用三基学习器加权平均），接口与原模型一致
-  - 判定节点：sklearn是否可用？
-  - 第三级-Mock降级：连sklearn也不可用→随机数生成模拟结果+返回"mock:true"标志，前端提示"仅供参考"
-  - 底部标注：全程对用户透明，系统在任何环境下不中断服务
+- **【结构拆解（完全展开，可直接用于绘图）】**：
+  - **[输入节点]** 用户调用某项分析功能API（如预测、异常检测）
+  - ↓
+  - **[处理节点] 路由级延迟导入：在API路由处理函数内部尝试导入所需重型库**
+    - 导入目标：PyTorch、statsmodels、Prophet等
+    - 对应11个布尔可用性标志：
+      - PROPHET_AVAILABLE（Prophet时序预测）
+      - INFORMER_AVAILABLE（Informer长序列预测）
+      - STGCN_AVAILABLE（STGCN时空图卷积）
+      - PINN_AVAILABLE（PINN物理信息神经网络）
+      - ENSEMBLE_AVAILABLE（Ensemble集成学习）
+      - LIGHTWEIGHT_AVAILABLE（轻量替代模块）
+      - SHAP_AVAILABLE（SHAP可解释性）
+      - NEO4J_AVAILABLE（Neo4j图数据库）
+      - SUPABASE_KG_AVAILABLE（Supabase知识图谱）
+      - CAUSAL_AVAILABLE（因果推理引擎）
+      - KG_QA_AVAILABLE（知识图谱问答）
+  - ↓
+  - **[判断节点1] 重型库导入是否成功？**
+    - → 是（标志置为True）→ 进入第一级
+    - → 否（标志置为False）→ 跳转判断节点2
+  - ↓是
+  - **[第一级] 条件导入 — 使用原始深度学习模型**
+    - [执行] 直接加载并运行完整模型（PyTorch/Prophet等）
+    - → 输出：原始模型推理结果
+    - → 流程结束，返回结果
+  - ↓否（从判断节点1的"否"分支到达）
+  - **[判断节点2] Scikit-learn基础库是否可用？**
+    - → 是 → 进入第二级
+    - → 否 → 跳转第三级
+  - ↓是
+  - **[第二级] 轻量替代 — 启用纯sklearn实现的替代模型**
+    - [替代模型2.1] LightweightInformer：梯度提升回归器 + 1至7阶滞后特征
+    - [替代模型2.2] LightweightSTGCN：随机森林回归器 + 5个最近邻监测点观测值作为空间特征
+    - [替代模型2.3] LightweightPINN：梯度提升回归器预测值 + Terzaghi一维固结理论物理约束项加权融合
+    - [替代模型2.4] LightweightEnsemble：梯度提升 + 随机森林 + 二次多项式回归三基学习器加权平均
+    - [关键约束] 所有替代模型保持与原始模型相同的输入输出接口，上层调用代码无需修改
+    - → 输出：轻量替代模型推理结果
+    - → 流程结束，返回结果
+  - ↓否（从判断节点2的"否"分支到达）
+  - **[第三级] Mock降级 — 随机数模拟**
+    - [执行] 随机数生成器在合理工程数值范围内构造模拟结果
+    - [标记] 返回数据中附加"mock:true"标志
+    - [前端处理] 前端界面据此提示用户"当前结果仅供参考，非真实模型推理输出"
+    - → 输出：模拟结果 + mock:true标志
+    - → 流程结束，返回结果
+  - ↓
+  - **[保障结果]** 无论命中哪一级，系统均返回有效响应，全程对用户透明，任何部署环境下不中断服务
 - **与知识文件的对应依据**：knowledge.md 13.1节"ML API延迟加载策略"——条件导入、可用性标志清单（PROPHET_AVAILABLE等6个）、轻量替代（纯sklearn实现）、Mock降级（200+mock:true）
 - **对 Figma AI 提示词的限制条件**：
   - 需新建
