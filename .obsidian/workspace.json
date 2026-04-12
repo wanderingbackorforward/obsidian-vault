@@ -49,7 +49,8 @@
               "title": "_进度"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -210,13 +211,13 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "5580c3bdc0cc3f37",
+  "active": "452826f43e98e01c",
   "lastOpenFiles": [
+    "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/~$apter7_final_v2.docx",
     "task.md.md",
     "wkspc/chapter7_final_v2.docx",
     "wkspc/7.4_research_notes.md",
-    "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/~$apter7_final.docx",
     "wkspc/chapter7_final.docx",
     "wkspc/format_chapter7.py",
@@ -227,7 +228,6 @@
     "wkspc/~$apter7_merged.docx",
     "wkspc/chapter7_merged.docx",
     "wkspc/~$apter7_combined.docx",
-    "wkspc/chapter7_combined.docx",
     "曾昆4-9周彪4-9/_进度.md",
     "wkspc/figures/fig7-4_react_reasoning_flow.png",
     "wkspc/figures/fig7-3_intelligent_analysis_architecture.png",
