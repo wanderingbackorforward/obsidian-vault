@@ -141,17 +141,41 @@ def is_table_border(line):
     return bool(re.match(r'^\s*-{5,}', line.strip()))
 
 def preprocess_lines(lines):
-    """合并被 Pandoc 拆断的续行，但保留表格区域原样。"""
-    # 第一步：标记表格区域（两个 ---- 边框之间的行）
-    in_table = False
-    table_flags = [False] * len(lines)
+    """合并被 Pandoc 拆断的续行，但保留表格区域原样。
+    表格区域定义：以 **表7-x 标题** 开始，到最后一个 ----- 边框结束。"""
+    # 第一步：标记表格区域
+    # 找到所有 ----- 边框行的位置
+    border_indices = []
     for idx, l in enumerate(lines):
-        s = l.strip()
-        if re.match(r'^-{5,}', s):
+        if re.match(r'^\s*-{5,}', l.strip()):
+            border_indices.append(idx)
+
+    # 将边框配对（每个表格有3个边框：顶部、分隔、底部）
+    table_ranges = []
+    i = 0
+    while i < len(border_indices) - 1:
+        start = border_indices[i]
+        # 找到连续的边框组（属于同一个表格）
+        # 一个表格至少有2个边框（顶部+底部），通常3个（+分隔线）
+        end = border_indices[i]
+        j = i + 1
+        while j < len(border_indices) and border_indices[j] - border_indices[j-1] < 30:
+            end = border_indices[j]
+            j += 1
+        # 往上找表格标题
+        caption_start = start
+        for k in range(start - 1, max(start - 3, -1), -1):
+            if re.match(r'^\*\*表\d+-\d+', lines[k].strip()):
+                caption_start = k
+                break
+        table_ranges.append((caption_start, end))
+        i = j
+
+    # 标记表格行
+    table_flags = [False] * len(lines)
+    for s, e in table_ranges:
+        for idx in range(s, e + 1):
             table_flags[idx] = True
-            in_table = not in_table
-            continue
-        table_flags[idx] = in_table
 
     # 第二步：非表格区域内，合并连续非空非特殊行
     result = []
@@ -161,7 +185,7 @@ def preprocess_lines(lines):
         stripped = line.strip()
 
         # 表格区域行直接保留
-        if table_flags[i] or re.match(r'^-{5,}', stripped):
+        if table_flags[i]:
             result.append(line)
             i += 1
             continue
@@ -169,8 +193,7 @@ def preprocess_lines(lines):
         # 特殊行直接保留
         if (not stripped or
             stripped.startswith('#') or
-            re.match(r'^!\[', stripped) or
-            re.match(r'^\*\*表\d+-\d+', stripped)):
+            re.match(r'^!\[', stripped)):
             result.append(line)
             i += 1
             continue
@@ -184,9 +207,7 @@ def preprocess_lines(lines):
             next_stripped = lines[i].strip()
             if (not next_stripped or
                 next_stripped.startswith('#') or
-                re.match(r'^!\[', next_stripped) or
-                re.match(r'^\*\*表\d+-\d+', next_stripped) or
-                re.match(r'^-{5,}', next_stripped)):
+                re.match(r'^!\[', next_stripped)):
                 break
             merged += next_stripped
             i += 1
