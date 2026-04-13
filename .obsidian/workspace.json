@@ -36,18 +36,6 @@
             }
           },
           {
-            "id": "d9a8fcaf6f2aa9f7",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "pics/图7-2 四大功能域与十五模块划分关系图.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "图7-2 四大功能域与十五模块划分关系图"
-            }
-          },
-          {
             "id": "d26c14ecd599cac1",
             "type": "leaf",
             "state": {
@@ -62,7 +50,7 @@
             }
           },
           {
-            "id": "19b85ce391a080ed",
+            "id": "7930004e3e35eea1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -74,9 +62,21 @@
               "icon": "lucide-file",
               "title": "chapter7_图片提示词"
             }
+          },
+          {
+            "id": "19b85ce391a080ed",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "pics/图7-9 云端与本地双模式存储架构图.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "图7-9 云端与本地双模式存储架构图"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -237,19 +237,20 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "19b85ce391a080ed",
+  "active": "7930004e3e35eea1",
   "lastOpenFiles": [
+    "pics/图7-10 智能分析模块架构图.pdf",
+    "wkspc/chapter7_图片清单.md",
+    "pics/图7-2 四大功能域与十五模块划分关系图.pdf",
     "pics/图7-9 云端与本地双模式存储架构图.pdf",
     "pics/图7-8 InSAR遥感数据三步处理工作流图.jpg",
     "pics/图7-7 异步文件上传与后台处理时序图.pdf",
     "pics/图7-6 多格式批量导入处理流程图.pdf",
     "pics/图7-5 多源数据采集与融合流程图.pdf",
+    "pics/图7-1 系统总体架构图.pdf",
+    "wkspc/chapter7_图片提示词.md",
     "pics/图7-4 基于角色的访问控制模型图.pdf",
     "pics/图7-3 前后端分离三层架构部署图.pdf",
-    "wkspc/chapter7_图片清单.md",
-    "pics/图7-2 四大功能域与十五模块划分关系图.pdf",
-    "wkspc/chapter7_图片提示词.md",
-    "pics/图7-1 系统总体架构图.pdf",
     "pics",
     "wkspc/chapter7_output/~$apter7_final.docx",
     "wkspc/pictures_worknotes.md",
@@ -260,7 +261,6 @@
     "曾昆4-9周彪4-9/skills/CLAUDE.md",
     "wkspc/pictures_task.md",
     "wkspc/图片提示词_工作笔记.md",
-    "wkspc/chapter7_output/figure_list.txt",
     "wkspc/chapter7_output/placeholders/图7-23.png",
     "wkspc/chapter7_output/placeholders/图7-22.png",
     "wkspc/chapter7_output/placeholders/图7-21.png",
