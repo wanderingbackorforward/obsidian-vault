@@ -237,8 +237,9 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "2b41b18e25daa5c8",
+  "active": "19b85ce391a080ed",
   "lastOpenFiles": [
+    "pics/图7-9 云端与本地双模式存储架构图.pdf",
     "pics/图7-8 InSAR遥感数据三步处理工作流图.jpg",
     "pics/图7-7 异步文件上传与后台处理时序图.pdf",
     "pics/图7-6 多格式批量导入处理流程图.pdf",
@@ -269,7 +270,6 @@
     "wkspc/chapter7_output/placeholders/图7-17.png",
     "wkspc/chapter7_output/placeholders/图7-16.png",
     "wkspc/chapter7_output/placeholders/图7-15.png",
-    "wkspc/chapter7_output/placeholders/图7-14.png",
     "wkspc/chapter7_system_knowledge.md",
     "task.md.md",
     "wkspc/7.1-7.4图片处理.md",
