@@ -39,14 +39,12 @@
             "id": "d9a8fcaf6f2aa9f7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "wkspc/chapter7_图片提示词.md",
-                "mode": "source",
-                "source": false
+                "file": "pics/图7-2 四大功能域与十五模块划分关系图.pdf"
               },
-              "icon": "lucide-file",
-              "title": "chapter7_图片提示词"
+              "icon": "lucide-file-text",
+              "title": "图7-2 四大功能域与十五模块划分关系图"
             }
           },
           {
@@ -227,11 +225,12 @@
   },
   "active": "d9a8fcaf6f2aa9f7",
   "lastOpenFiles": [
+    "wkspc/chapter7_图片提示词.md",
+    "pics/图7-2 四大功能域与十五模块划分关系图.pdf",
     "pics/图7-1 系统总体架构图.pdf",
     "pics",
     "wkspc/chapter7_output/~$apter7_final.docx",
     "wkspc/chapter7_图片清单.md",
-    "wkspc/chapter7_图片提示词.md",
     "wkspc/pictures_worknotes.md",
     "wkspc/chapter7_图片提示词 - 副本.md",
     "曾昆4-9周彪4-9/AI_START.md",
@@ -268,8 +267,6 @@
     "wkspc/chapter7_output",
     "wkspc/~$apter7_final.docx",
     "wkspc/7.4_draft.md",
-    "wkspc/figure_list.txt",
-    "wkspc/placeholders",
     "wkspc/7.4_research_notes.md",
     "wkspc/word版式要求.md",
     "wkspc/word.md"
