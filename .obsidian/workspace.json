@@ -90,7 +90,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -252,8 +252,10 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "7930004e3e35eea1",
+  "active": "d26c14ecd599cac1",
   "lastOpenFiles": [
+    "wkspc/chapter7_output/chapter7_final~884D7.tmp",
+    "wkspc/chapter7_图片提示词.md",
     "pics/图7-20 三维数字孪生可视化技术架构图_01.png",
     "pics/图7-1 系统总体架构图_01(1).png",
     "pics/图7-20 三维数字孪生可视化技术架构图.pdf",
@@ -266,9 +268,7 @@
     "pics/图7-11 机器学习模型三级自适应加载策略图_01.png",
     "pics/图7-10 智能分析模块架构图_01.png",
     "pics/图7-9 云端与本地双模式存储架构图_01.png",
-    "pics/图7-7 异步文件上传与后台处理时序图_01.png",
     "pics/图7-17 集群控制与远程管控功能模块关系图.pdf",
-    "wkspc/chapter7_图片提示词.md",
     "pics/## 图7-17 集群控制与远程管控功能模块关系图.pdf",
     "pics/图7-16 AI助手ReAct推理流程图.pdf",
     "pics/图7-15 风险预警与多级自动告警流程图.pdf",
