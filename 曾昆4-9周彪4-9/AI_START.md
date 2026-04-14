@@ -8,10 +8,44 @@ Claude --allowedTools "Bash,Read file"
 
 minimax：
 
-$env:ANTHROPIC_BASE_URL = "https://minimaxi.com"
+
+
+# 1. 彻底清除残留的错误配置和项目历史缓存
+Remove-Item -Path "$HOME\.claude.json" -Force -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\.claude -ErrorAction SilentlyContinue
+
+# 2. 注入“已完成引导”状态，绕过官方域名 api.anthropic.com 的强制连通性检查
+'{"hasCompletedOnboarding": true}' | Out-File -FilePath "$HOME\.claude.json" -Encoding utf8
+
+# 3. 配置针对 Minimax M2.7 优化的环境变量
+# 注意：端点必须使用 /anthropic 后缀，变量名需使用 AUTH_TOKEN
+$env:ANTHROPIC_BASE_URL = "https://api.minimaxi.com/anthropic"
 $env:ANTHROPIC_AUTH_TOKEN = "sk-cp-SzaxK2wvzlYR0RT5UWjz-YZF2WUKhjqbcGOr_A8X3o9fsMTvR9OAsz9wZUk27tcXC54cemymUpvPAjW9amN3g68WIkVcgwI-yzqBkryI0aSWe5YBwLa3hlg"
-$env:CLAUDE_CODE_MODEL = "minimax-m2.7"
+
+# 4. 将 Claude Code 所有的模型档位全部强制重指向 M2.7
+$env:CLAUDE_CODE_MODEL = "MiniMax-M2.7"
+$env:ANTHROPIC_MODEL = "MiniMax-M2.7"
+$env:ANTHROPIC_SMALL_FAST_MODEL = "MiniMax-M2.7"
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL = "MiniMax-M2.7"
+$env:ANTHROPIC_DEFAULT_OPUS_MODEL = "MiniMax-M2.7"
+$env:ANTHROPIC_DEFAULT_HAIKU_MODEL = "MiniMax-M2.7"
+
+# 5. 设置必要性能参数
+$env:API_TIMEOUT_MS = "3000000"
+$env:CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1"
+
+# 6. 启动 Claude Code
 claude --allowedTools "Bash,Read file"
+
+
+
+
+
+
+
+
+
+
 
 
 
