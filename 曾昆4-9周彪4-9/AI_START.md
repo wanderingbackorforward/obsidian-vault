@@ -6,14 +6,9 @@ Claude --allowedTools "Bash,Read file"
 
 
 
-不能用：
+minimax
+sk-cp-SzaxK2wvzlYR0RT5UWjz-YZF2WUKhjqbcGOr_A8X3o9fsMTvR9OAsz9wZUk27tcXC54cemymUpvPAjW9amN3g68WIkVcgwI-yzqBkryI0aSWe5YBwLa3hlg
 
-$env:ANTHROPIC_BASE_URL="https://moonshot.cn"
-
-$env:ANTHROPIC_AUTH_TOKEN="sk-DA2nMreIfj9ayunjpb3RUCYvPBJTfHySVjO4yC6YFxSDZQAn"
-
-$env:ANTHROPIC_MODEL="kimi-k2.5"
-Claude --allowedTools "Bash,Read file"
 
 
 其实还是有问题的 主要是我们确实是研发了一个软件 我担心会彻底转向软件工程产品介绍风格 其实不是不能介绍 但是要把握好度 我们是土木专业的 对于第二个问题 请你要注意 再写一版提示词让它反复发掘模板文档解决这个问题 为此我还来为他提供了另外一个模板 来让这个skill——软件+土木毕业论文.docx
