@@ -6,8 +6,13 @@ Claude --allowedTools "Bash,Read file"
 
 
 
-minimax
-sk-cp-SzaxK2wvzlYR0RT5UWjz-YZF2WUKhjqbcGOr_A8X3o9fsMTvR9OAsz9wZUk27tcXC54cemymUpvPAjW9amN3g68WIkVcgwI-yzqBkryI0aSWe5YBwLa3hlg
+minimax：
+
+$env:ANTHROPIC_BASE_URL = "https://minimaxi.com"
+$env:ANTHROPIC_AUTH_TOKEN = "sk-cp-SzaxK2wvzlYR0RT5UWjz-YZF2WUKhjqbcGOr_A8X3o9fsMTvR9OAsz9wZUk27tcXC54cemymUpvPAjW9amN3g68WIkVcgwI-yzqBkryI0aSWe5YBwLa3hlg"
+$env:CLAUDE_CODE_MODEL = "minimax-m2.7"
+claude --allowedTools "Bash,Read file"
+
 
 
 
