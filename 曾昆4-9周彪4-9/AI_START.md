@@ -1,9 +1,14 @@
 cd "D:\mine\mynotes\obsidian-vault\曾昆4-9周彪4-9\skills"
 
+
+Stop-Process -Name node -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "$HOME\.claude.json" -Force -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force .\.claude -ErrorAction SilentlyContinue
+'{"hasCompletedOnboarding": true}' | Out-File -FilePath "$HOME\.claude.json" -Encoding utf8
 $env:ANTHROPIC_AUTH_TOKEN="sk-i43P96HyNcFEeHoAq8hh7iWDldwO2ADFij5584Z3xGU980dq"
 $env:ANTHROPIC_BASE_URL="https://www.fucheers.top"
-# 2. 环境变量声明为 4-6 $env:CLAUDE_CODE_MODEL="claude-sonnet-4-6" # 3. 命令行强行锁定 4-6，劈开所有历史缓存的干扰 claude --model claude-sonnet-4-6 --allowedTools "Bash,Read file"
-Claude --allowedTools "Bash,Read file"
+$env:CLAUDE_CODE_MODEL="claude-sonnet-4-6"
+claude --model claude-sonnet-4-6 --allowedTools "Bash,Read file"
 
 
 # 1. 彻底清除全局配置文件（删除导致报错的旧模型记忆） Remove-Item -Path "$HOME\.claude.json" -Force -ErrorAction SilentlyContinue # 2. 彻底清除当前项目下的历史对话和局部缓存（注意：这会清空本项目的对话历史） Remove-Item -Recurse -Force .\.claude -ErrorAction SilentlyContinue
