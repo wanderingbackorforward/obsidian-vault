@@ -6,6 +6,9 @@ $env:ANTHROPIC_BASE_URL="https://www.fucheers.top"
 Claude --allowedTools "Bash,Read file"
 
 
+# 1. 彻底清除全局配置文件（删除导致报错的旧模型记忆） Remove-Item -Path "$HOME\.claude.json" -Force -ErrorAction SilentlyContinue # 2. 彻底清除当前项目下的历史对话和局部缓存（注意：这会清空本项目的对话历史） Remove-Item -Recurse -Force .\.claude -ErrorAction SilentlyContinue
+
+
 
 minimax：
 
