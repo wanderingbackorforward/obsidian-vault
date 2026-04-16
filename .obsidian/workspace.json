@@ -74,8 +74,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -183,7 +182,7 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "72cf4a8cb17e7cca",
+  "active": "2b41b18e25daa5c8",
   "lastOpenFiles": [
     "曾昆4-9周彪4-9/_进度.md",
     "扫地知识",
