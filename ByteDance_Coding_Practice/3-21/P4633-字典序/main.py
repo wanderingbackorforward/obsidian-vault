@@ -7,12 +7,12 @@ def solve_str(x,s):
     return s1+s2+s3
 
 def solve(n,x,s):
-    s=set()
+    st=set()
     for i in range(n-x+1):
         new_s1 = s[i,i+x]
         new_s2 = solve_str(x,new_s1)
-        s.add(new_s2)
-    return len(s)
+        st.add(new_s2)
+    return len(st)
 
 def main():
     T = int(input())
@@ -20,6 +20,7 @@ def main():
         n,x = map(int,input())
         s = input().strip()
         count = sovle(n,x,s)
+        print (count)
 
 if __name__ =="__main__":
     main()
