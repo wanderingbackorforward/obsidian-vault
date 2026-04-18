@@ -19,7 +19,7 @@ def main():
     for _ in range(T):
         n,x = map(int,input().split())
         s = input().strip()
-        count = sovle(n,x,s)
+        count = solve(n,x,s)
         print (count)
 
 if __name__ =="__main__":
