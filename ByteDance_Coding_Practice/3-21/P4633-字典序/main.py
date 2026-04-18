@@ -11,13 +11,15 @@ def to_num(s):
 def solve(n,s1,s2):
     n1 = to_num(s1)
     n2 = to_num(s2)
-    return n2-n1
+    return n2-n1-1
 
 def main():
     T = int(input())
+    results = []
     for _ in range(T):
         n,s1,s2 = input().split()
-        res = solve(n,s1,s2)
+        results.append(solve(n,s1,s2))
+    for res in results:
         print(res)
 
 if __name__ =="__main__":
