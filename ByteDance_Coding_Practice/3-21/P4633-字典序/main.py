@@ -17,7 +17,7 @@ def solve(n,x,s):
 def main():
     T = int(input())
     for _ in range(T):
-        n,x = map(int,input())
+        n,x = map(int,input().split())
         s = input().strip()
         count = sovle(n,x,s)
         print (count)
