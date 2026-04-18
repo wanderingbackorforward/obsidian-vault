@@ -11,7 +11,7 @@ def to_num(s):
 def solve(n,s1,s2):
     n1 = to_num(s1)
     n2 = to_num(s2)
-    return s2-s1
+    return n2-n1
 
 def main():
     T = int(input())
