@@ -9,7 +9,7 @@ def solve_str(x,s):
 def solve(n,x,s):
     st=set()
     for i in range(n-x+1):
-        new_s1 = s[i,i+x]
+        new_s1 = s[i:i+x]
         new_s2 = solve_str(x,new_s1)
         st.add(new_s2)
     return len(st)
