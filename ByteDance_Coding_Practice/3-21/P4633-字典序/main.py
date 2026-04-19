@@ -29,7 +29,7 @@ def solve(grid,n):
                 if curren > counts:
                     counts=curren
                     ways=1
-                else:
+                elif curren == counts:
                     ways+=1
     
     return counts,ways
