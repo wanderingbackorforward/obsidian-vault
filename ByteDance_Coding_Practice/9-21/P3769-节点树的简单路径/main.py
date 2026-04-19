@@ -2,7 +2,8 @@ from collections import defaultdict
 
 def dfs(node,parent,weights,uvs,res,visited):
     weight = weights[node]
-    res[weight]+=1
+    res[weight]+=visited[weight]
+    visited[weight]+=1
     for child in uvs[node]:
         if child != parent:
             pass
