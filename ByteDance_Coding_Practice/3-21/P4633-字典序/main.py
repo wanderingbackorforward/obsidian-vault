@@ -1,5 +1,5 @@
 def c2n(c):
-    if c > 'a' and c <'z':
+    if c >= 'a' and c <='z':
         return ord(c)-ord('a')
     return ord(c)-ord('A')+26
 
@@ -9,8 +9,7 @@ def solve(grid,n):
     total = [0]*k
     count_r = [[0]*k for _ in range(n)]
     count_c = [[0]*k for _ in range(n)]
-    char_counts_r = [[0]*n for _ in range(k)]
-    char_counts_c = [[0]*n for _ in range(k)]
+    
 
     for i in range(n):
         nums = grid_num[i]
@@ -19,12 +18,22 @@ def solve(grid,n):
             total[num]+=1
             count_r[i][num]+=1
             count_c[j][num]+=1
-            char_counts_r[num][i]+=1
-            char_counts_c[num][j]+=1    
-
-    char_min_rc = [min(char_counts_r(k))+min(char_counts_c(k)) for _ in range(k)]
-
+    counts = 0
+    ways = 0
+    for i in range(n):
+        for j in range(n):
+            for k_n in range(k):
+                curren = total[k_n] + 2*n-1 -count_r[i][k_n] -count_c[j][k_n]
+                if nums[i][j]==k_n:
+                    curren+=1
+                if curren > counts:
+                    counts=curren
+                    ways=1
+                else:
+                    ways+=1
     
+    return counts,ways
+
 
 def main():
     T = int(input())
