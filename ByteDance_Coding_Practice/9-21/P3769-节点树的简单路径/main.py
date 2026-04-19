@@ -23,7 +23,7 @@ def main():
         uvs[u-1].append(v-1)
         uvs[v-1].append(u-1)
     res = solve(weights,uvs,T)
-    print(" ".join(res))
+    print(" ".join(map(str,res)))
 
 if __name__ == "__main__":
     main()
