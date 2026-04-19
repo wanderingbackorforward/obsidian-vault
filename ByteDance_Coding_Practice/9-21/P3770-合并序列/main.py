@@ -8,8 +8,8 @@ def merge(res,k):
     if len(res)<k:
         return res
     start = 0
-    while len(res)-start+1>=k:
-        while len(res)-start+1>=k and is_same(res,start,start+k-1):
+    while len(res)-start>=k:
+        while len(res)-start>=k and is_same(res,start,start+k-1):
             new_num = res[start]+1
             res = res[:start]+[new_num]+res[start+k:]
         start+=1
