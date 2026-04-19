@@ -27,6 +27,6 @@ def solve(n,k):
 def main():
     n,k = map(int,input().split())
     res = solve(n,k)
-    print(' '.join(map(res,str)))
+    print(' '.join(map(str,res)))
 if __name__ == "__main__":
     main()
