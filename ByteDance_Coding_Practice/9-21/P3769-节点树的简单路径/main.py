@@ -6,12 +6,12 @@ def dfs(node,parent,weights,uvs,res,visited):
     visited[weight]+=1
     for child in uvs[node]:
         if child != parent:
-            pass
+            dfs(child,node,weights,uvs,res,visited)
 
 def solve(weights,uvs):
     res = defaultdict(int)
     visited = defaultdict(int)
-
+    dfs(0,-1,weights,uvs,res,visited)
     return res
 
 def main():
