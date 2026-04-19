@@ -20,7 +20,7 @@ def solve(n,k):
     res=[]
     for i in range(n):
         res.append(1)
-        merge(res,k)
+        res = merge(res,k)
 
     return res
 
