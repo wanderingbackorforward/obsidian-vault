@@ -1,13 +1,14 @@
 from collections import defaultdict
 
-def dfs(node,parent,uvs,res,visited):
-    
+def dfs(node,parent,weights,uvs,res,visited):
+    weight = weights[node]
+    res[weight]+=1
     for child in uvs[node]:
         if child != parent:
             pass
 
 def solve(weights,uvs):
-    res = []
+    res = defaultdict(int)
     visited = defaultdict(int)
 
     return res
