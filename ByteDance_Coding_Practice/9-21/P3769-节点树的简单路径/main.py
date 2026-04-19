@@ -8,7 +8,7 @@ def dfs(node,parent,weights,uvs,res,visited):
         if child != parent:
             dfs(child,node,weights,uvs,res,visited)
 
-def solve(weights,uvs):
+def solve(weights,uvs):    
     res = defaultdict(int)
     visited = defaultdict(int)
     dfs(0,-1,weights,uvs,res,visited)
