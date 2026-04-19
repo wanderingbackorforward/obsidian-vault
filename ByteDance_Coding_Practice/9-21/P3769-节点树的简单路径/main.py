@@ -15,11 +15,11 @@ def solve(weights,uvs):
     return res
 
 def main():
-    T = map(int,input())
+    T = int(input())
     weights = map(int,input().split())
     uvs = defaultdict(list)
     for _ in range(T-1):
-        u,v = map(int,input())
+        u,v = map(int,input().split())
         uvs[u-1].append(v-1)
         uvs[v-1].append(u-1)
     res = solve(weights,uvs)
