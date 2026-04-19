@@ -24,7 +24,7 @@ def solve(grid,n):
         for j in range(n):
             for k_n in range(k):
                 curren = total[k_n] + 2*n-1 -count_r[i][k_n] -count_c[j][k_n]
-                if nums[i][j]==k_n:
+                if grid_num[i][j]==k_n:
                     curren+=1
                 if curren > counts:
                     counts=curren
