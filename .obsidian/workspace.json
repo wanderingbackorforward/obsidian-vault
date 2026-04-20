@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "AI_",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -182,8 +182,9 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "72cf4a8cb17e7cca",
+  "active": "2b41b18e25daa5c8",
   "lastOpenFiles": [
+    "wkspc/chapter7_final_v2.docx",
     "曾昆4-9周彪4-9/pics/权限系统架构图重生成 – Figma Make.pdf",
     "skills/thesis-writing-style/references/软件+土木毕业论文.md",
     "skills/thesis-formatting/references/排版规范.md",
@@ -203,7 +204,6 @@
     "skills/排版规范.docx",
     "skills/thesis-writing-style 技能专项改进：土木工程+软件系统写作平衡.md",
     "skills/thesis-writing-style",
-    "skills/thesis-formatting",
     "skills/CLAUDE.md",
     "曾昆4-9周彪4-9/pics/图7-9 云端与本地双模式存储架构图_01.png",
     "曾昆4-9周彪4-9/pics/图7-8 InSAR遥感数据三步处理工作流图.jpg",
