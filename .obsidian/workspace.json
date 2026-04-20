@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "曾昆4-9周彪4-9/AI_START.md",
+                "file": "wkspc/output/chapter7_final_v2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI_START"
+              "title": "chapter7_final_v2"
             }
           }
         ]
@@ -184,6 +184,22 @@
   },
   "active": "2b41b18e25daa5c8",
   "lastOpenFiles": [
+    "曾昆4-9周彪4-9/AI_START.md",
+    "wkspc/output/images/image9.png",
+    "wkspc/output/images/image8.jpeg",
+    "wkspc/output/images/image7.png",
+    "wkspc/output/images/image5.png",
+    "wkspc/output/images/image4.png",
+    "wkspc/output/images/image6.png",
+    "wkspc/output/images/image3.png",
+    "wkspc/output/images/image22.jpeg",
+    "wkspc/output/images/image20.jpeg",
+    "wkspc/output/images/image21.jpeg",
+    "wkspc/output/images",
+    "wkspc/output/chapter7_final_v2.md",
+    "wkspc/output",
+    "wkspc/docx_to_md.py.tmp.35284.1776671007992",
+    "wkspc/docx_to_md.py",
     "wkspc/chapter7_final_v2.docx",
     "曾昆4-9周彪4-9/pics/权限系统架构图重生成 – Figma Make.pdf",
     "skills/thesis-writing-style/references/软件+土木毕业论文.md",
@@ -195,26 +211,11 @@
     "skills/thesis-writing-style/SKILL.md",
     "skills/thesis-formatting/SKILL.md",
     "skills/thesis-formatting/references",
-    "skills/thesis-writing-style/references",
     "skills/软件+土木毕业论文.md",
-    "skills/范文.docx",
     "skills/范文.md",
-    "skills/软件+土木毕业论文.docx",
     "skills/排版规范.md",
-    "skills/排版规范.docx",
     "skills/thesis-writing-style 技能专项改进：土木工程+软件系统写作平衡.md",
-    "skills/thesis-writing-style",
     "skills/CLAUDE.md",
-    "曾昆4-9周彪4-9/pics/图7-9 云端与本地双模式存储架构图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-8 InSAR遥感数据三步处理工作流图.jpg",
-    "曾昆4-9周彪4-9/pics/图7-7 异步文件上传与后台处理时序图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-6 多格式批量导入处理流程图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-5 多源数据采集与融合流程图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-4 基于角色的访问控制模型图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-20 三维数字孪生可视化技术架构图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-3 前后端分离三层架构部署图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-2 四大功能域与十五模块划分关系图_01.png",
-    "曾昆4-9周彪4-9/pics/图7-19 工单生命周期状态转换图.jpg",
     "曾昆4-9周彪4-9/chapter7_system_knowledge.md",
     "曾昆4-9周彪4-9/7.4_draft.md",
     "曾昆4-9周彪4-9/7.3_draft.md",
@@ -228,7 +229,6 @@
     "ByteDance_Coding_Practice/8-17/P3401-三元组数组/note.md",
     "ByteDance_Coding_Practice/8-17/P3400-打乱数组排列/note.md",
     "ByteDance_Coding_Practice/8-17/P3399-小红的葫芦/note.md",
-    "ByteDance_Coding_Practice/8-17/P3398-小苯的GCD疑惑/note.md",
-    "ByteDance_Coding_Practice/9-21/P3772-驼峰序列/note.md"
+    "ByteDance_Coding_Practice/8-17/P3398-小苯的GCD疑惑/note.md"
   ]
 }
