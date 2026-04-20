@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wkspc/output/chapter7_final_v2.md",
+                "file": "曾昆4-9周彪4-9/AI_START.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "chapter7_final_v2"
+              "title": "AI_START"
             }
           }
         ]
@@ -184,6 +184,8 @@
   },
   "active": "2b41b18e25daa5c8",
   "lastOpenFiles": [
+    "wkspc/output/chapter7_final_v2.md",
+    "wkspc/docx_to_md.py.tmp.35284.1776671095121",
     "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/output/images/image9.png",
     "wkspc/output/images/image8.jpeg",
@@ -196,7 +198,6 @@
     "wkspc/output/images/image20.jpeg",
     "wkspc/output/images/image21.jpeg",
     "wkspc/output/images",
-    "wkspc/output/chapter7_final_v2.md",
     "wkspc/output",
     "wkspc/docx_to_md.py.tmp.35284.1776671007992",
     "wkspc/docx_to_md.py",
@@ -210,7 +211,6 @@
     "skills/thesis-writing-style/references/范文.docx",
     "skills/thesis-writing-style/SKILL.md",
     "skills/thesis-formatting/SKILL.md",
-    "skills/thesis-formatting/references",
     "skills/软件+土木毕业论文.md",
     "skills/范文.md",
     "skills/排版规范.md",
@@ -228,7 +228,6 @@
     "ByteDance_Coding_Practice/8-19/P1910-特殊数组/note.md",
     "ByteDance_Coding_Practice/8-17/P3401-三元组数组/note.md",
     "ByteDance_Coding_Practice/8-17/P3400-打乱数组排列/note.md",
-    "ByteDance_Coding_Practice/8-17/P3399-小红的葫芦/note.md",
-    "ByteDance_Coding_Practice/8-17/P3398-小苯的GCD疑惑/note.md"
+    "ByteDance_Coding_Practice/8-17/P3399-小红的葫芦/note.md"
   ]
 }

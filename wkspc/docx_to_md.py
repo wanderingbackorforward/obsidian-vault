@@ -114,6 +114,22 @@ def _is_caption(para) -> bool:
     return False
 
 
+def _clean_alt_text(raw: str) -> str:
+    """清理图片 alt text：去除文件路径、重复文件名等噪音。"""
+    if not raw:
+        return ''
+    # 去除 Windows/Unix 文件路径前缀
+    if re.match(r'^[A-Za-z]:[/\\]', raw) or raw.startswith('/'):
+        # 提取路径中的文件名部分，去掉扩展名
+        basename = os.path.splitext(os.path.basename(raw.rstrip()))[0]
+        # 有时 descr 是 "路径文件名" 拼接，取最后一段有意义的中文
+        m = re.search(r'(图\d+-\d+\s*.+)', basename)
+        if m:
+            return m.group(1).strip()
+        return basename
+    return raw
+
+
 def _extract_images_from_para(para_elem, rel_map: dict) -> list:
     """从段落 XML 中提取所有图片引用，返回 [(rel_path, alt_text), ...]。"""
     images = []
@@ -122,11 +138,11 @@ def _extract_images_from_para(para_elem, rel_map: dict) -> list:
         if blip is not None:
             embed = blip.get(qn('r:embed'))
             if embed and embed in rel_map:
-                # 尝试获取 alt text
                 doc_pr = drawing.find(f'.//{{{NS["wp"]}}}docPr')
                 alt = ''
                 if doc_pr is not None:
-                    alt = doc_pr.get('descr', '') or doc_pr.get('name', '')
+                    raw = doc_pr.get('descr', '') or doc_pr.get('name', '')
+                    alt = _clean_alt_text(raw)
                 images.append((rel_map[embed], alt))
     # VML 格式图片 (兼容旧版)
     for imagedata in para_elem.findall(f'.//{{{NS["v"]}}}imagedata'):
@@ -303,8 +319,8 @@ def convert(docx_path: str, output_path: str, assets_dir: str):
                     alt = alt_text if alt_text else f'image_{img_counter:03d}'
                     md_lines.append(f'![{alt}]({img_path})')
                     md_lines.append('')
-                if not text:
-                    continue
+                # 含图片的段落中的文本通常来自绘图对象内的文本框，跳过
+                continue
 
             if not text:
                 continue
