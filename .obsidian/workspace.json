@@ -196,8 +196,15 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "2b41b18e25daa5c8",
+  "active": "72cf4a8cb17e7cca",
   "lastOpenFiles": [
+    "InSAR页面简历面试准备/05-最小学习路径.md",
+    "InSAR页面简历面试准备/04-简历与面试表述.md",
+    "InSAR页面简历面试准备/03-筛选分类.md",
+    "InSAR页面简历面试准备/02-可写进简历的点.md",
+    "InSAR页面简历面试准备/01-页面业务理解.md",
+    "InSAR页面简历面试准备/00-总览与文件清单.md",
+    "InSAR页面简历面试准备",
     "wkspc/output/test_links.md",
     "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/output/chapter7_final_v2.md",
@@ -210,7 +217,6 @@
     "wkspc/tests/generate_test_docx.py",
     "wkspc/tests/fixtures",
     "wkspc/tests",
-    "wkspc/docx_to_md.py.tmp.35284.1776671095121",
     "wkspc/output/images/image9.png",
     "wkspc/output/images/image8.jpeg",
     "wkspc/output/images/image7.png",
@@ -237,11 +243,6 @@
     "曾昆4-9周彪4-9/7.2_draft.md",
     "曾昆4-9周彪4-9/7.1-7.4图片处理.md",
     "曾昆4-9周彪4-9/7.1_draft.md",
-    "ByteDance_Coding_Practice/8-19/P1913-节点树/note.md",
-    "ByteDance_Coding_Practice/8-19/P1912-彩带/note.md",
-    "ByteDance_Coding_Practice/8-19/P1911-模拟经营游戏/note.md",
-    "ByteDance_Coding_Practice/8-19/P1910-特殊数组/note.md",
-    "ByteDance_Coding_Practice/8-17/P3401-三元组数组/note.md",
-    "ByteDance_Coding_Practice/8-17/P3400-打乱数组排列/note.md"
+    "ByteDance_Coding_Practice/8-19/P1913-节点树/note.md"
   ]
 }
