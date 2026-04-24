@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "曾昆4-9周彪4-9/AI_START.md",
+                "file": "wkspc24tunnel/未命名.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI_START"
+              "title": "未命名"
             }
           },
           {
@@ -198,6 +198,10 @@
   },
   "active": "72cf4a8cb17e7cca",
   "lastOpenFiles": [
+    "曾昆4-9周彪4-9/AI_START.md",
+    "wkspc24tunnel/未命名.md",
+    "wkspc24tunnel",
+    "新建文件夹",
     "InSAR页面简历面试准备/05-最小学习路径.md",
     "InSAR页面简历面试准备/04-简历与面试表述.md",
     "InSAR页面简历面试准备/03-筛选分类.md",
@@ -206,7 +210,6 @@
     "InSAR页面简历面试准备/00-总览与文件清单.md",
     "InSAR页面简历面试准备",
     "wkspc/output/test_links.md",
-    "曾昆4-9周彪4-9/AI_START.md",
     "wkspc/output/chapter7_final_v2.md",
     "wkspc/output/test_images",
     "wkspc/tests/fixtures/~$cx_links_and_bookmarks.docx",
@@ -215,8 +218,6 @@
     "wkspc/docx_to_md.py.tmp.35284.1776671803385",
     "wkspc/tests/fixtures/docx_links_and_bookmarks.docx",
     "wkspc/tests/generate_test_docx.py",
-    "wkspc/tests/fixtures",
-    "wkspc/tests",
     "wkspc/output/images/image9.png",
     "wkspc/output/images/image8.jpeg",
     "wkspc/output/images/image7.png",
@@ -242,7 +243,6 @@
     "曾昆4-9周彪4-9/7.3_draft.md",
     "曾昆4-9周彪4-9/7.2_draft.md",
     "曾昆4-9周彪4-9/7.1-7.4图片处理.md",
-    "曾昆4-9周彪4-9/7.1_draft.md",
-    "ByteDance_Coding_Practice/8-19/P1913-节点树/note.md"
+    "曾昆4-9周彪4-9/7.1_draft.md"
   ]
 }
