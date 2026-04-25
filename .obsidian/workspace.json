@@ -35,8 +35,7 @@
               "title": "提示词——隧道agent优化和演示"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -197,11 +196,11 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "2b41b18e25daa5c8",
+  "active": "72cf4a8cb17e7cca",
   "lastOpenFiles": [
+    "wkspc24tunnel/提示词——隧道agent优化和演示.md",
     "wkspc/output/test_links.md",
     "曾昆4-9周彪4-9/AI_START.md",
-    "wkspc24tunnel/提示词——隧道agent优化和演示.md",
     "未命名.md",
     "wkspc24tunnel",
     "新建文件夹",
