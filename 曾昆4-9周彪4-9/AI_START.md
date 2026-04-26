@@ -19,9 +19,9 @@ $env:ANTHROPIC_AUTH_TOKEN = "9e5ce137029b42acbf1b063ba2f0ccdf.aFiWykOLs8vwfLUr"
 
 $env:ANTHROPIC_DEFAULT_HAIKU_MODEL = "glm-4.5-air"
 
-$env:ANTHROPIC_DEFAULT_SONNET_MODEL = "glm-5"
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL = "glm-5.1"
 
-$env:ANTHROPIC_DEFAULT_OPUS_MODEL = "glm-5"
+$env:ANTHROPIC_DEFAULT_OPUS_MODEL = "glm-5.1"
 
 Claude --allowedTools "Bash,Read file"
 
