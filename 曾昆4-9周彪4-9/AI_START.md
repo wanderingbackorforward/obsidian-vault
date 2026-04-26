@@ -11,6 +11,21 @@ $env:CLAUDE_CODE_MODEL="claude-sonnet-4-6"
 claude --model claude-sonnet-4-6 --allowedTools "Bash,Read file"
 
 
+智谱
+
+$env:ANTHROPIC_BASE_URL = "https://open.bigmodel.cn/api/anthropic"
+
+$env:ANTHROPIC_AUTH_TOKEN = "04b7babc1f3b4d32b4a47b20ad670bb5.0SIKwKWMMK0bNmap"
+
+$env:ANTHROPIC_DEFAULT_HAIKU_MODEL = "glm-4.5-air"
+
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL = "glm-5"
+
+$env:ANTHROPIC_DEFAULT_OPUS_MODEL = "glm-5"
+
+Claude --allowedTools "Bash,Read file"
+
+
 # 1. 彻底清除全局配置文件（删除导致报错的旧模型记忆） Remove-Item -Path "$HOME\.claude.json" -Force -ErrorAction SilentlyContinue # 2. 彻底清除当前项目下的历史对话和局部缓存（注意：这会清空本项目的对话历史） Remove-Item -Recurse -Force .\.claude -ErrorAction SilentlyContinue
 
 
