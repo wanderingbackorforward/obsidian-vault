@@ -15,7 +15,7 @@ claude --model claude-sonnet-4-6 --allowedTools "Bash,Read file"
 
 $env:ANTHROPIC_BASE_URL = "https://open.bigmodel.cn/api/anthropic"
 
-$env:ANTHROPIC_AUTH_TOKEN = "04b7babc1f3b4d32b4a47b20ad670bb5.0SIKwKWMMK0bNmap"
+$env:ANTHROPIC_AUTH_TOKEN = "9e5ce137029b42acbf1b063ba2f0ccdf.aFiWykOLs8vwfLUr"
 
 $env:ANTHROPIC_DEFAULT_HAIKU_MODEL = "glm-4.5-air"
 
