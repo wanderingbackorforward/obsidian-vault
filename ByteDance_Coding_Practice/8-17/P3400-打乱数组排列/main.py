@@ -7,7 +7,7 @@ def main():
     a = list(map(int,input().split()))
 
     cnt = Counter(a)
-    freqs = cnt.values()
+    freqs = list(cnt.values())
     m=len(freqs)
     for i in range(m):
         for j in range(i+1,m):
