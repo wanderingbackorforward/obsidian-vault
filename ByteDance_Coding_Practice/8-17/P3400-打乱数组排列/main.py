@@ -1,4 +1,5 @@
-from math import Counter,comb
+from collections import Counter
+from math import comb
 
 def main():
     res = 0
