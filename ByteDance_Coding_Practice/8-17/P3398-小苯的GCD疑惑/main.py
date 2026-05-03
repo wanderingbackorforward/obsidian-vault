@@ -10,7 +10,7 @@ def main():
         for x in a:
             res = math.gcd(res,x)
         ans.append(str(res))
-    print("\n".join(ans))
+    print("\n".join(ans*k))
     
 if __name__ == "__main__":
 	main()
