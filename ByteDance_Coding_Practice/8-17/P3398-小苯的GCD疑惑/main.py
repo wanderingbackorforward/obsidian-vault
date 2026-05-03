@@ -9,8 +9,8 @@ def main():
         res=0
         for x in a:
             res = math.gcd(res,x)
-        ans.append(str(res))
-    print("\n".join(ans*k))
+        ans.append(str(res*k))
+    print("\n".join(ans))
     
 if __name__ == "__main__":
 	main()
