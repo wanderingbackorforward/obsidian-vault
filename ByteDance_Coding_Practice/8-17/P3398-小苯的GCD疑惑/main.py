@@ -13,4 +13,4 @@ def main():
     print("\n".join(ans))
     
 if __name__ == "__main__":
-	main()
+    main()
