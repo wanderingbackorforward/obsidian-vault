@@ -37,6 +37,26 @@
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "5afd285ebd346591",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "029f0788d409827e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "日常幻觉问题检验口语化说明.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "日常幻觉问题检验口语化说明"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,10 +218,11 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "133141246f46a972",
+  "active": "029f0788d409827e",
   "lastOpenFiles": [
-    "华为那个项目本身的资料/现在一些日常运维的常见问题和处理经验.md",
     "华为那个项目本身的资料/日常幻觉问题检验.md",
+    "日常幻觉问题检验口语化说明.md",
+    "华为那个项目本身的资料/现在一些日常运维的常见问题和处理经验.md",
     "华为那个项目本身的资料/面试很可能必须回答不能逃避的问题.md",
     "华为那个项目本身的资料/简历怎么写.md",
     "华为那个项目本身的资料/基础内容整齐版本.md",
@@ -235,7 +256,6 @@
     "ByteDance_Coding_Practice/4-19/P3399-小红的葫芦/note.md",
     "ByteDance_Coding_Practice/8-17 - 副本 (2)/P3401-三元组数组/note.md",
     "ByteDance_Coding_Practice/8-17 - 副本 (2)/P3400-打乱数组排列/note.md",
-    "ByteDance_Coding_Practice/8-17 - 副本 (2)/P3399-小红的葫芦/note.md",
     "wkspc/output/images/image9.png",
     "wkspc/output/images/image8.jpeg",
     "wkspc/output/images/image7.png",
