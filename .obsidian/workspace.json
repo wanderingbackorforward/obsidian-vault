@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端版本面试的整体的准备/同恩的口语.md",
+                "file": "chatgptjiyi.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "同恩的口语"
+              "title": "chatgptjiyi"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "87045591976b50e9",
@@ -186,8 +185,8 @@
   },
   "active": "381d384d6be64eac",
   "lastOpenFiles": [
-    "前端版本面试的整体的准备/同恩.md",
     "前端版本面试的整体的准备/同恩的口语.md",
+    "前端版本面试的整体的准备/同恩.md",
     "耐面王字节寿司/1-5.md",
     "耐面王字节寿司",
     "华为项目经历为基础的面试准备/项目基础.md",
