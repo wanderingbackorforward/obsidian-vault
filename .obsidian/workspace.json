@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI_START.md",
+                "file": "AISTART/AI_START.md",
                 "mode": "source",
                 "source": false
               },
@@ -35,8 +35,7 @@
               "title": "AI_START"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,10 +197,11 @@
       "audio-recorder:开始/结束录音": false
     }
   },
-  "active": "1287b6e12e9155da",
+  "active": "2b41b18e25daa5c8",
   "lastOpenFiles": [
+    "AISTART",
+    "AISTART/AI_START.md",
     "temp.md",
-    "AI_START.md",
     "宁扬城际/传感器需求：.md",
     "宁扬城际",
     "chatgptjiyi.md",
@@ -231,7 +231,6 @@
     "华为项目经历为基础的面试准备/02-可写进简历的点.md",
     "华为项目经历为基础的面试准备",
     "曾经发出的指令.md",
-    "ByteDance_Coding_Practice/4-19/P4808. 第1题-走廊通行与按钮策略/note.md",
     "ByteDance_Coding_Practice/4-19/P4808. 第1题-走廊通行与按钮策略/main.py",
     "ByteDance_Coding_Practice/4-19/P4808. 第1题-走廊通行与按钮策略/input.txt",
     "ByteDance_Coding_Practice/4-19/P4808. 第1题-走廊通行与按钮策略",

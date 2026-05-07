@@ -27,3 +27,6 @@ $env:ANTHROPIC_DEFAULT_SONNET_MODEL = "glm-5.1"
 $env:ANTHROPIC_DEFAULT_OPUS_MODEL = "glm-5.1"
 
 Claude --allowedTools "Bash,Read file"
+
+答案：
+
