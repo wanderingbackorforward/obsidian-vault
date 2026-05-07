@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "chatgptjiyi.md",
+                "file": "AI_START.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "chatgptjiyi"
+              "title": "AI_START"
             }
           }
         ]
@@ -185,13 +185,13 @@
   },
   "active": "381d384d6be64eac",
   "lastOpenFiles": [
+    "chatgptjiyi.md",
     "前端版本面试的整体的准备/同恩的口语.md",
     "前端版本面试的整体的准备/同恩.md",
     "耐面王字节寿司/1-5.md",
     "耐面王字节寿司",
     "华为项目经历为基础的面试准备/项目基础.md",
     "华为项目经历为基础的面试准备/3我针对可能的问题的提前的回答.md",
-    "chatgptjiyi.md",
     "前端版本面试的整体的准备",
     "华为那个项目本身的资料/日常幻觉问题检验2.md",
     "华为那个项目本身的资料/日常幻觉问题检验.md",
@@ -212,7 +212,7 @@
     "华为项目经历为基础的面试准备/02-可写进简历的点.md",
     "华为项目经历为基础的面试准备",
     "曾经发出的指令.md",
-    "曾昆4-9周彪4-9/AI_START.md",
+    "AI_START.md",
     "ByteDance_Coding_Practice/4-19/P4808. 第1题-走廊通行与按钮策略/note.md",
     "ByteDance_Coding_Practice/4-19/P4808. 第1题-走廊通行与按钮策略/main.py",
     "ByteDance_Coding_Practice/4-19/P4808. 第1题-走廊通行与按钮策略/input.txt",
