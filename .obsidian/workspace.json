@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AISTART/ai_new_zhipu.md",
+                "file": "宁扬城际/传感器需求：.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ai_new_zhipu"
+              "title": "传感器需求："
             }
           }
         ],
@@ -200,8 +200,8 @@
   },
   "active": "1287b6e12e9155da",
   "lastOpenFiles": [
-    "temp.md",
     "AISTART/ai_new_zhipu.md",
+    "temp.md",
     "AISTART/AI_START.md",
     "AISTART",
     "宁扬城际/传感器需求：.md",
